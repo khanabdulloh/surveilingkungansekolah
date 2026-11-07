@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>Harmoni Lingkungan Sekolah — Survei Kepuasan SMKS Ciledug Al Musaddadiyah</title>
+<link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD-8YPFS6i86EyZZNDUhwuam5ro_mtc9So2muvB7EDWz1Zp6rarLubvVS3vfVVoto_S6SaHlIPPnmNaddUugGUztWkJYhDwwT8CU1BcUuq9TNyxnHKa6B44iDBx6LjR1-z3r7_C34jviaWeOYgk4bNJHsziPV4KR5mQjY69HVhyphenhyphenR3STD4xp-b46x_HeR4/s160/An8Em6pLCtVUNFZTK-rgdQG9pKiDxE1AR7m_1QO_5slD3C5qFXYq7S9suI1ztpViB_aUnbOGE2-Y71AU9SF3GjQzZ09xbw5aat-JT_7ptJ4VcfdGeJ73DWbHD9IDtVHa_16MjCj09HJ4eGBvZMo-removebg-preview.png">
 <meta name="theme-color" content="#1b3f92">
 <meta name="description" content="Survei persepsi dan kepuasan warga SMKS Ciledug Al Musaddadiyah Garut terhadap lingkungan sekolah.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -338,10 +339,8 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
 </dialog>
 
 <script>
-/* ============ KONFIGURASI ============
-   Tempel URL Web App Google Apps Script (berakhiran /exec) di bawah ini.
-   Cara membuatnya ada di file Code.gs. */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAs_OSwQh94JgE_7hWGlOnMDw58PCWzVoTaQ86WW1YEIa88_5s9Npdrx2_SbiPz_dn/exec";
+/* Alamat layanan penerima jawaban */
+const API_URL = "https://script.google.com/macros/s/AKfycbzAs_OSwQh94JgE_7hWGlOnMDw58PCWzVoTaQ86WW1YEIa88_5s9Npdrx2_SbiPz_dn/exec";
 
 const LABELS={5:"Sangat Puas",4:"Puas",3:"Cukup Puas",2:"Kurang Puas",1:"Tidak Puas"};
 const ROLES=[
@@ -518,14 +517,14 @@ document.querySelectorAll("[data-faq]").forEach(b=>b.onclick=()=>$("#faqd").show
 $("#faqx").onclick=()=>$("#faqd").close();
 $("#faqd").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
 
-/* ---- Kirim ke Google Sheet (Apps Script) ---- */
+/* ---- Kirim jawaban ---- */
 async function send(){
   const m=$("#msg"),b=$("#next");
-  if(!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
-    m.textContent="Konfigurasi belum lengkap: isi SCRIPT_URL dengan alamat Web App Apps Script.";m.style.display="block";return}
+  if(!/^https:\/\//.test(API_URL)){
+    m.textContent="Layanan pengiriman belum tersedia. Silakan hubungi pihak sekolah.";m.style.display="block";return}
   b.disabled=true;b.textContent="Mengirim…";
   try{
-    const res=await fetch(SCRIPT_URL,{method:"POST",redirect:"follow",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
+    const res=await fetch(API_URL,{method:"POST",redirect:"follow",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
     let j;try{j=await res.json()}catch(x){throw new Error("akses")}
     if(!j||!j.ok)throw new Error("server:"+(j&&j.error||"tidak diketahui"));
     const r=FIELDS.map((f,i)=>f.t==="rate"?parseInt(val(i)):0).filter(Boolean);
@@ -534,8 +533,8 @@ async function send(){
     $("#form").hidden=true;$(".side").style.display="none";$("#app").style.gridTemplateColumns="1fr";
     $("#done").hidden=false;window.scrollTo({top:0,behavior:"smooth"});
   }catch(err){
-    const e=String(err&&err.message||"");
-    m.textContent=e==="akses"?"Pengiriman ditolak: Web App belum dibuka untuk umum. Hubungi admin sekolah. Jawaban Anda aman di perangkat ini.":e.indexOf("server:")===0?"Server menolak jawaban ("+e.slice(7)+"). Hubungi admin sekolah. Jawaban Anda aman di perangkat ini.":"Pengiriman gagal. Periksa koneksi internet lalu coba lagi. Jawaban Anda aman di perangkat ini.";m.style.display="block";
+    if(/[?&]debug/.test(location.search))console.error(err);
+    m.textContent="Jawaban belum dapat dikirim saat ini. Jawaban Anda aman di perangkat ini. Periksa koneksi internet lalu coba lagi, atau hubungi pihak sekolah.";m.style.display="block";
     b.disabled=false;b.textContent="Kirim jawaban"}
 }
 restore();ph();
