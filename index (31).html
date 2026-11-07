@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Harmoni Lingkungan Sekolah — Survei Kepuasan SMKS Ciledug Al Musaddadiyah</title>
+<meta name="theme-color" content="#1b3f92">
+<meta name="description" content="Survei persepsi dan kepuasan warga SMKS Ciledug Al Musaddadiyah Garut terhadap lingkungan sekolah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:#f3f6fb;--card:#fff;--ink:#0e1a33;--hd:#12285f;--mute:#5b6a87;--line:#dfe6f2;--p:#1b3f92;--p2:#2d5fcf;--soft:#e8eefb;--gold:#c8a24b;--amber:#f2b01e;--ok:#0f9b64;--err:#d32f22;
+--r1:10px;--r2:14px;--r3:20px;--r4:28px;--th:60px;--ease:cubic-bezier(.2,.7,.2,1);
+--sh:0 1px 2px rgba(14,26,51,.04),0 16px 40px -16px rgba(11,61,145,.2);--serif:"Source Serif 4",Georgia,serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0a1222;--card:#101b31;--ink:#e8eefb;--hd:#f1f5ff;--mute:#9aaac8;--line:#22314f;--p:#3b6fe0;--p2:#6ea2ff;--soft:#172a4d;--ok:#34d399;--err:#ff8a80;--sh:0 16px 40px -16px rgba(0,0,0,.65)}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 16px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:var(--bg)}
+.i{width:1em;height:1em;display:block}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* ===== Halaman masuk ===== */
+.login,.top,.wrap,footer{display:none}
+body[data-stage=welcome] .login{display:grid}
+body[data-stage=survey] .top{display:block}
+body[data-stage=survey] .wrap{display:block}
+body[data-stage=survey] footer{display:block}
+.login{min-height:100vh;min-height:100dvh;grid-template-columns:1.05fr 1fr}
+.bp{position:sticky;top:0;align-self:start;height:100vh;height:100dvh;min-height:0;overflow:hidden;color:#fff;display:flex;flex-direction:column;padding:clamp(22px,5vh,48px) clamp(28px,5vw,88px);background:radial-gradient(120% 70% at 100% 0%,#2f62d0 0%,transparent 60%),linear-gradient(180deg,#1f4799 0%,#12307a 50%,#0a1d57 100%)}
+.bp::before{content:"";position:absolute;right:-200px;top:-140px;width:640px;height:640px;border-radius:50%;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 0 90px rgba(255,255,255,.025)}
+.bp>*{position:relative;flex:none}
+.brand{display:flex;align-items:center;gap:16px}
+.tile{width:60px;height:60px;border-radius:var(--r2);background:#fff;display:grid;place-items:center;padding:7px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.tile img{max-width:100%;max-height:100%}
+.brand b{display:block;font-size:19px;line-height:1.2;letter-spacing:.01em}
+.brand span{font-size:14.5px;color:rgba(255,255,255,.76)}
+.bp h1{font:600 clamp(32px,min(4.6vw,7.4vh),64px)/1.06 var(--serif);margin:clamp(18px,6vh,100px) 0 0;letter-spacing:-.015em;text-wrap:balance}
+.rule{width:56px;height:3px;border-radius:3px;background:var(--gold);margin:clamp(14px,3vh,28px) 0}
+.bp p{margin:0;font-size:clamp(15px,2.3vh,18px);line-height:1.65;max-width:46ch;color:rgba(255,255,255,.86)}
+.feats{list-style:none;margin:clamp(14px,3.5vh,40px) 0 0;padding:0;max-width:540px}
+.feats li{display:flex;gap:18px;align-items:center;padding:clamp(8px,1.6vh,16px) 0;border-top:1px solid rgba(255,255,255,.13)}
+.feats li:last-child{border-bottom:1px solid rgba(255,255,255,.13)}
+.feats .t{flex:none;width:46px;height:46px;border-radius:var(--r2);border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);display:grid;place-items:center;font-size:22px}
+.feats b{display:block;font-size:16.5px;line-height:1.3}
+.feats small{font-size:14px;color:rgba(255,255,255,.72)}
+@media(min-width:901px){
+ .bp .feats{flex:1 1 0;min-height:0;max-height:400px;display:flex;flex-direction:column;margin-bottom:0}
+ .bp .feats li{flex:1 1 0;min-height:0;padding:0;overflow:hidden}
+ .bp .bf{padding-top:18px;padding-bottom:2px;flex:none}
+ .bp h1{font-size:clamp(30px,min(4.2vw,6.4vh),60px)}
+}
+.bf{margin-top:auto;padding-top:20px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:13.5px;color:rgba(255,255,255,.72)}
+.bf>div{display:flex;align-items:center;gap:12px;color:#fff}
+.bf .badge{font-size:30px;color:var(--gold);display:grid;line-height:0}
+.bf b{display:block;line-height:1.2;font-size:15px}
+.bf small{color:rgba(255,255,255,.72)}
+.fp{display:flex;align-items:center;justify-content:center;padding:clamp(16px,3vh,40px) 24px;background:var(--card)}
+.fi{width:100%;max-width:560px}
+.fi h2{font:700 clamp(30px,3.6vw,38px)/1.1 var(--serif);color:var(--hd);margin:0 0 8px;letter-spacing:-.015em}
+.fi>p{margin:0 0 clamp(12px,2.5vh,22px);color:var(--mute);font-size:16px}
+.lr{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.lnk{all:unset;cursor:pointer;color:var(--mute);font-size:14.5px;display:inline-flex;align-items:center;gap:6px;min-height:32px;border-radius:8px}
+.lnk:hover{color:var(--p2)}
+.lnk:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.lnk i{width:17px;height:17px;display:inline-block}
+.grp{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:var(--mute);margin:16px 0 8px}
+.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.role{position:relative;display:block}
+.role input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.role>span{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:58px;border:1.5px solid var(--line);border-radius:var(--r2);transition:border-color .15s,background .15s,box-shadow .15s;height:100%;position:relative;background:var(--card)}
+.role>span>.i{flex:none;font-size:22px;color:var(--mute);transition:color .15s}
+.role em{font-style:normal;line-height:1.3;flex:1;min-width:0}
+.role strong{display:block;font-size:15px;font-weight:600;line-height:1.25}
+.role small{display:block;font-size:12.5px;color:var(--mute);margin-top:2px}
+.roles .role:last-child:nth-child(odd){grid-column:1/-1}
+@media(hover:hover){.role:hover>span{border-color:var(--p2)}}
+.role input:checked+span{border-color:var(--p);background:var(--soft);box-shadow:0 0 0 1px var(--p)}
+.role input:checked+span>.i{color:var(--p)}
+.role input:focus-visible+span{outline:3px solid var(--amber);outline-offset:2px}
+.tick{display:none;flex:none;width:24px;height:24px;border-radius:50%;background:var(--p);color:#fff;place-items:center;font-size:14px}
+.role input:checked+span .tick{display:grid}
+.rw.bad .role>span{border-color:var(--err)}
+.hint{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:var(--r2);padding:10px 16px;font-size:14px;color:var(--mute);margin:14px 0 0}
+.hint::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.fp .f{margin:14px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.f>label,.f>.q{display:block;font-weight:600;margin-bottom:8px}
+.f>label small{font-weight:500;color:var(--mute)}
+.inp{position:relative}
+.inp>span{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:grid;font-size:20px;line-height:0;color:var(--mute);pointer-events:none}
+.inp input[type=text]{padding-left:48px;height:52px}
+.f.bad input{border-color:var(--err)}
+.wmsg{display:none;margin-top:14px;color:var(--err);font-weight:600;font-size:14px}
+.go{width:100%;height:54px;margin:18px 0 0!important;display:flex;justify-content:center;align-items:center;gap:10px;font-size:16.5px!important}
+.go>span{display:grid;font-size:20px;line-height:0;transition:transform .2s var(--ease)}
+@media(hover:hover){.go:hover>span{transform:translateX(3px)}}
+.stat{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--ok);font-size:13.5px;margin:14px 0 0}
+.stat::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.foot{border-top:1px solid var(--line);margin-top:14px;padding-top:14px;text-align:center;color:var(--mute);font-size:14px}
+.foot a{color:var(--p2);font-weight:600;text-decoration:none}
+.foot a:hover{text-decoration:underline}
+
+/* ===== Survei ===== */
+.top{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);background:color-mix(in srgb,var(--bg) 84%,transparent);border-bottom:1px solid var(--line)}
+.top .in{max-width:1120px;margin:0 auto;padding:0 24px;height:var(--th);display:flex;align-items:center;gap:12px}
+.top img{height:36px;width:auto}
+.top b{font-weight:700;font-size:15px;line-height:1.2;display:block}
+.top small{display:block;color:var(--mute);font-weight:500;font-size:12.5px}
+#saved{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ok);opacity:0;transition:opacity .3s;white-space:nowrap}
+#saved::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+#saved.on{opacity:1}
+.ghost{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 14px;border:1px solid var(--line);border-radius:99px;font-size:14px;font-weight:600;background:var(--card);transition:border-color .15s}
+.ghost:hover{border-color:var(--p2)}
+.ghost:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.ghost i{width:17px;height:17px;display:inline-block;color:var(--p)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.head{padding:44px 0 28px;max-width:720px}
+.head h1{font:700 clamp(28px,4.5vw,40px)/1.15 var(--serif);color:var(--hd);margin:0 0 10px;letter-spacing:-.015em;text-wrap:balance}
+.head p{margin:0;color:var(--mute);font-size:17px;max-width:62ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 13px;font-size:13px;font-weight:600;color:var(--mute)}
+.chips i{display:inline-block;width:16px;height:16px;margin-right:7px;vertical-align:-3px;color:var(--p)}
+.app{display:grid;grid-template-columns:264px minmax(0,1fr);gap:28px;align-items:start;padding-bottom:64px}
+.side{position:sticky;top:calc(var(--th) + 24px);background:var(--card);border:1px solid var(--line);border-radius:var(--r3);padding:12px 14px;box-shadow:var(--sh)}
+.side ol{list-style:none;margin:0;padding:0}
+.side li{position:relative}
+.side li:not(:last-child)::after{content:"";position:absolute;left:23px;top:38px;bottom:-10px;width:2px;background:var(--line);transition:background .3s}
+.side li.done:not(:last-child)::after{background:var(--ok)}
+.side button{all:unset;box-sizing:border-box;position:relative;z-index:1;display:flex;align-items:center;gap:12px;width:100%;padding:10px;border-radius:var(--r2);cursor:pointer;font-size:14px;font-weight:600;line-height:1.35;color:var(--mute);transition:background .15s}
+.side button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.side button:disabled{cursor:default;opacity:.55}
+.side button:not(:disabled):hover{background:var(--soft)}
+.side .dot{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;border:2px solid var(--line);background:var(--card)}
+.side li.cur button{background:var(--soft);color:var(--ink)}
+.side li.cur .dot{background:var(--p);border-color:var(--p);color:#fff}
+.side li.done .dot{background:var(--ok);border-color:var(--ok);color:#fff}
+.main{background:var(--card);border:1px solid var(--line);border-radius:var(--r4);box-shadow:var(--sh);overflow:clip}
+.mprog{position:sticky;top:calc(var(--th) + env(safe-area-inset-top,0px));z-index:15;height:4px;background:var(--line)}
+.mprog i{display:block;height:100%;width:0;border-radius:0 4px 4px 0;background:linear-gradient(90deg,var(--p),var(--p2));transition:width .45s var(--ease)}
+.body{padding:36px}
+.step{display:none}
+.step.on{display:block;animation:in .3s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.step h2{font:700 26px/1.2 var(--serif);color:var(--hd);margin:0 0 8px;letter-spacing:-.01em}
+.sub{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 24px;color:var(--mute);font-size:15px}
+.count{flex:none;background:var(--soft);color:var(--p);font-size:13px;font-weight:700;border-radius:99px;padding:3px 12px;font-variant-numeric:tabular-nums}
+.body .f{margin-bottom:26px}
+.req{color:var(--err)}
+input[type=text],textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r2);padding:13px 16px;transition:border-color .2s,background .2s,box-shadow .2s}
+input::placeholder,textarea::placeholder{color:color-mix(in srgb,var(--mute) 70%,transparent)}
+textarea{min-height:104px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--p2);background:var(--card);box-shadow:0 0 0 4px var(--soft)}
+.opts{display:grid;gap:8px}
+.opt{position:relative;display:block}
+.opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt>span{display:block;padding:13px 16px;border:1.5px solid var(--line);border-radius:var(--r2);font-weight:500;transition:border-color .15s,background .15s}
+@media(hover:hover){.opt:hover>span{border-color:var(--p2)}}
+.opt input:checked+span{background:var(--soft);border-color:var(--p2);font-weight:700}
+.opt input:focus-visible+span{outline:3px solid var(--amber);outline-offset:2px}
+.item{padding:20px 18px;margin:0 -18px;border-radius:var(--r3);transition:background .2s}
+.item+.item{border-top:1px solid var(--line);border-radius:0}
+.item.bad{background:color-mix(in srgb,var(--err) 8%,transparent);border-radius:var(--r3)}
+.item p{margin:0 0 14px;font-weight:600;line-height:1.5;max-width:64ch}
+.rate{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.rate .opt>span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:84px;padding:10px 4px;text-align:center;line-height:1.2;border-radius:var(--r2)}
+.rate em{display:block;font-style:normal;font-size:28px;line-height:0;color:var(--mute);transition:color .15s,transform .2s var(--ease)}
+.rate b{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.rate small{font-size:11.5px;font-weight:600;color:var(--mute)}
+@media(hover:hover){.rate .opt:hover em{color:var(--p2);transform:scale(1.1)}}
+.rate .opt input:checked+span{background:var(--p);border-color:var(--p);box-shadow:0 10px 20px -10px var(--p)}
+.rate .opt input:checked+span em{color:#fff;transform:scale(1.1)}
+.rate .opt input:checked+span b,.rate .opt input:checked+span small{color:#fff}
+.legend{font-size:13px;color:var(--mute);margin:-10px 0 10px}
+.nav{position:sticky;bottom:0;z-index:10;display:flex;justify-content:space-between;gap:12px;padding:16px 36px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.pri,.sec{font:700 15px "Plus Jakarta Sans",sans-serif;min-height:48px;border-radius:var(--r2);padding:0 28px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;border:1.5px solid transparent}
+.pri{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;margin-left:auto;box-shadow:0 12px 22px -12px var(--p)}
+@media(hover:hover){.pri:hover{transform:translateY(-1px)}.sec:hover{border-color:var(--p2)}}
+.pri:active,.sec:active{transform:scale(.98)}
+.sec{background:var(--card);border-color:var(--line);color:var(--ink)}
+button:disabled{opacity:.6;cursor:wait}
+.msg{display:none;margin:0 36px 16px;padding:12px 16px;border-radius:var(--r2);background:color-mix(in srgb,var(--err) 10%,transparent);color:var(--err);font-weight:600;font-size:14px}
+.done{text-align:center;padding:64px 24px}
+.ok{width:76px;height:76px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;margin:0 auto 20px;font-size:38px;line-height:0;box-shadow:0 16px 30px -12px var(--ok)}
+.done h2{font:700 30px/1.2 var(--serif);color:var(--hd);margin:0 0 10px;text-wrap:balance}
+.done p{color:var(--mute);max-width:46ch;margin:0 auto 20px}
+.avg{display:inline-block;background:var(--soft);border-radius:var(--r3);padding:12px 24px;margin-bottom:24px;font-weight:700}
+.avg b{font-size:28px;color:var(--p)}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:0 20px calc(36px + env(safe-area-inset-bottom,0px))}
+
+/* ===== FAQ ===== */
+dialog{border:0;border-radius:var(--r4);padding:0;width:calc(100% - 32px);max-width:640px;max-height:86vh;max-height:86dvh;overflow:auto;background:var(--card);color:var(--ink);box-shadow:0 30px 80px -20px rgba(8,20,50,.6)}
+dialog[open]{animation:in .25s var(--ease)}
+dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
+.dh{position:sticky;top:0;background:var(--card);z-index:1;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 28px 10px}
+.dh h2{font:700 22px/1.25 var(--serif);color:var(--hd);margin:0}
+.x{all:unset;box-sizing:border-box;cursor:pointer;flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:20px;color:var(--mute);background:var(--soft)}
+.x:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.db{padding:8px 28px 28px}
+.db details{border:1px solid var(--line);border-radius:var(--r2);margin-bottom:10px;transition:border-color .15s}
+.db details[open]{border-color:var(--p2)}
+.db summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:14px;line-height:1.4}
+.db summary::-webkit-details-marker{display:none}
+.db summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--soft);color:var(--p);display:grid;place-items:center;font-size:17px}
+.db details[open] summary::after{content:"–";background:var(--p);color:#fff}
+.db details div{padding:0 18px 16px;color:var(--mute)}
+.db a{color:var(--p2);font-weight:600}
+
+/* ===== Responsif ===== */
+@media(max-height:900px) and (min-width:901px){.feats small{display:none}.feats .t{width:38px;height:38px;font-size:19px}.feats li{gap:14px}}
+@media(max-height:760px) and (min-width:901px){.bp .feats{display:none}}
+@media(max-width:1100px) and (min-width:901px){.roles{grid-template-columns:1fr}.bp{padding-left:32px;padding-right:32px}}
+@media(max-width:900px){
+ :root{--th:56px}
+ .login{grid-template-columns:1fr;background:#0a1d57}
+ .bp{position:relative;height:auto;overflow:hidden;padding:max(24px,env(safe-area-inset-top)) 22px 58px}
+ .bp h1{margin-top:24px;font-size:clamp(30px,8vw,40px)}
+ .rule{margin:16px 0}.bp p{font-size:15.5px}
+ .feats,.bf{display:none}
+ .fp{position:relative;margin-top:-30px;border-radius:var(--r4) var(--r4) 0 0;padding:28px 20px calc(32px + env(safe-area-inset-bottom,0px));align-items:flex-start}
+ .app{grid-template-columns:1fr;gap:0}.side{display:none}
+ .wrap{padding:0 16px}.top .in{padding:0 16px}
+ .head{padding:26px 0 20px}.head p{font-size:15.5px}.chips{margin-top:14px}
+ .main{border-radius:var(--r3)}
+ .body{padding:24px 18px}
+ .nav{padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+ .nav .pri,.nav .sec{flex:1;padding:0 16px}.nav .sec:not([style]){flex:0 1 auto;min-width:120px}
+ .msg{margin:0 16px 12px}
+ .item{margin:0 -10px;padding:18px 10px}.top small{display:none}
+ dialog{margin:auto 0 0;width:100%;max-width:100%;border-radius:var(--r4) var(--r4) 0 0}
+ .dh{padding:18px 20px 8px}.db{padding:8px 20px calc(24px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:560px){.roles,.two{grid-template-columns:1fr}.bp p{display:none}.rule{display:none}.bp h1{margin-top:20px}.step h2{font-size:23px}.sub{flex-wrap:wrap;gap:8px}#saved{font-size:12px}}
+@media(max-width:420px){.rate{gap:6px}.rate small{display:none}.rate .opt>span{min-height:72px}.rate em{font-size:26px}.chips span{font-size:12.5px;padding:5px 10px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-stage="welcome">
+
+<!-- ===== HALAMAN MASUK ===== -->
+<main class="login" id="login">
+  <section class="bp">
+    <div class="brand">
+      <div class="tile"><img alt="Logo SMKS Ciledug Al Musaddadiyah" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD-8YPFS6i86EyZZNDUhwuam5ro_mtc9So2muvB7EDWz1Zp6rarLubvVS3vfVVoto_S6SaHlIPPnmNaddUugGUztWkJYhDwwT8CU1BcUuq9TNyxnHKa6B44iDBx6LjR1-z3r7_C34jviaWeOYgk4bNJHsziPV4KR5mQjY69HVhyphenhyphenR3STD4xp-b46x_HeR4/s160/An8Em6pLCtVUNFZTK-rgdQG9pKiDxE1AR7m_1QO_5slD3C5qFXYq7S9suI1ztpViB_aUnbOGE2-Y71AU9SF3GjQzZ09xbw5aat-JT_7ptJ4VcfdGeJ73DWbHD9IDtVHa_16MjCj09HJ4eGBvZMo-removebg-preview.png"></div>
+      <div><b>SMK CALM</b><span>SMKS Ciledug Al Musaddadiyah Garut</span></div>
+    </div>
+    <h1>Harmoni Lingkungan Sekolah</h1>
+    <div class="rule"></div>
+    <p>Survei persepsi dan kepuasan bersama untuk menciptakan lingkungan sekolah yang nyaman, aman, bersih, sehat, tertib, dan mendukung proses pembelajaran.</p>
+    <ul class="feats">
+      <li><span class="t" data-ic="leaf"></span><div><b>Kebersihan</b><small>Kelas, halaman, toilet, dan kantin</small></div></li>
+      <li><span class="t" data-ic="home"></span><div><b>Kenyamanan</b><small>Suasana, pencahayaan, dan sirkulasi udara</small></div></li>
+      <li><span class="t" data-ic="lock"></span><div><b>Keamanan dan ketertiban</b><small>Rasa aman dan penerapan tata tertib</small></div></li>
+      <li><span class="t" data-ic="build"></span><div><b>Fasilitas dan sarana</b><small>Sarana belajar, ibadah, dan olahraga</small></div></li>
+      <li><span class="t" data-ic="heart"></span><div><b>Pelayanan dan lingkungan sosial</b><small>Sikap guru, tenaga kependidikan, dan warga</small></div></li>
+    </ul>
+    <div class="bf">
+      <div><span class="badge" data-ic="badge"></span><span><b>Terakreditasi A</b><small>BAN-PDM</small></span></div>
+      <span>© 2026 SMKS Ciledug Al Musaddadiyah Garut</span>
+    </div>
+  </section>
+
+  <section class="fp"><div class="fi">
+    <h2>Selamat datang</h2>
+    <p>Lengkapi identitas Anda untuk memulai survei.</p>
+    <div class="rw" id="rw" data-f="1">
+      <div class="lr"><span>Isi sebagai <span class="req">*</span></span>
+        <button type="button" class="lnk" data-faq><i data-ic="help"></i>Pertanyaan umum</button></div>
+      <div id="roles"></div>
+    </div>
+    <div class="hint" id="hint">Pilih peran Anda untuk melanjutkan.</div>
+    <div class="two">
+    <div class="f" id="fw0" data-f="0"><label for="f0">Nama lengkap <span class="req">*</span></label>
+      <div class="inp"><span data-ic="user"></span><input type="text" id="f0" name="f0" autocomplete="name" placeholder="Nama lengkap Anda"></div></div>
+    <div class="f" data-f="2"><label for="f2">Unit kerja / kelas <small>(opsional)</small></label>
+      <div class="inp"><span data-ic="build"></span><input type="text" id="f2" name="f2" autocomplete="off"></div></div>
+    </div>
+    <div class="wmsg" id="wmsg" role="alert"></div>
+    <button type="button" class="pri go" id="start">Mulai survei <span data-ic="arrow"></span></button>
+    <div class="stat">Jawaban tersimpan otomatis di perangkat ini</div>
+    <div class="foot">Butuh bantuan? <a href="https://wa.me/6287856681523">Hubungi pihak sekolah</a>.</div>
+  </div></section>
+</main>
+
+<!-- ===== SURVEI ===== -->
+<div class="top"><div class="in">
+  <img alt="Logo SMKS Ciledug Al Musaddadiyah" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD-8YPFS6i86EyZZNDUhwuam5ro_mtc9So2muvB7EDWz1Zp6rarLubvVS3vfVVoto_S6SaHlIPPnmNaddUugGUztWkJYhDwwT8CU1BcUuq9TNyxnHKa6B44iDBx6LjR1-z3r7_C34jviaWeOYgk4bNJHsziPV4KR5mQjY69HVhyphenhyphenR3STD4xp-b46x_HeR4/s160/An8Em6pLCtVUNFZTK-rgdQG9pKiDxE1AR7m_1QO_5slD3C5qFXYq7S9suI1ztpViB_aUnbOGE2-Y71AU9SF3GjQzZ09xbw5aat-JT_7ptJ4VcfdGeJ73DWbHD9IDtVHa_16MjCj09HJ4eGBvZMo-removebg-preview.png">
+  <div><b>SMKS Ciledug Al Musaddadiyah</b><small>Survei kepuasan warga sekolah</small></div>
+  <span id="saved">Draf tersimpan</span>
+  <button type="button" class="ghost" data-faq><i data-ic="help"></i>FAQ</button>
+</div></div>
+
+<div class="wrap">
+  <header class="head">
+    <h1>Penilaian lingkungan sekolah</h1>
+    <p id="hello">Beri penilaian untuk setiap pernyataan di bawah ini.</p>
+    <div class="chips"><span><i data-ic="clock"></i>± 5 menit</span><span><i data-ic="shield"></i>Untuk evaluasi sekolah</span><span><i data-ic="cloud"></i>Tersimpan otomatis</span></div>
+  </header>
+  <div class="app" id="app">
+    <aside class="side"><ol id="nav"></ol></aside>
+    <section>
+      <form class="main" id="form" novalidate>
+        <div class="mprog"><i id="pbar"></i></div>
+        <div class="body" id="steps"></div>
+        <div class="msg" id="msg" role="alert"></div>
+        <div class="nav">
+          <button type="button" class="sec" id="back">Kembali</button>
+          <button type="button" class="pri" id="next">Lanjut</button>
+        </div>
+      </form>
+      <div class="main done" id="done" hidden>
+        <div class="ok" data-ic="check"></div>
+        <h2>Terima kasih atas partisipasi Anda!</h2>
+        <p>Jawaban Anda sudah tersimpan dan akan menjadi bahan evaluasi untuk perbaikan lingkungan sekolah.</p>
+        <div class="avg" id="avg"></div><br>
+        <button class="sec" onclick="location.reload()">Isi survei lagi</button>
+      </div>
+    </section>
+  </div>
+</div>
+<footer>© SMKS Ciledug Al Musaddadiyah Garut</footer>
+
+<dialog id="faqd" aria-labelledby="faqh">
+  <div class="dh"><h2 id="faqh">Pertanyaan yang sering diajukan</h2><button type="button" class="x" id="faqx" aria-label="Tutup" data-ic="x"></button></div>
+  <div class="db">
+    <details><summary>Siapa saja yang boleh mengisi survei ini?</summary><div>Seluruh warga sekolah: guru, tenaga kependidikan, murid, orang tua atau wali, serta masyarakat umum dan tamu yang pernah berinteraksi dengan lingkungan SMKS Ciledug Al Musaddadiyah Garut.</div></details>
+    <details><summary>Untuk apa hasil survei ini digunakan?</summary><div>Hasilnya menjadi bahan evaluasi dan perbaikan untuk menciptakan lingkungan sekolah yang nyaman, aman, bersih, sehat, tertib, dan mendukung proses pembelajaran.</div></details>
+    <details><summary>Berapa lama waktu pengisian?</summary><div>Sekitar 5 menit. Setelah identitas, ada enam bagian: lima kelompok penilaian, lalu penilaian keseluruhan dan saran.</div></details>
+    <details><summary>Bagaimana cara membaca skala penilaian?</summary><div>Skala 1 sampai 5: 5 Sangat Puas, 4 Puas, 3 Cukup Puas, 2 Kurang Puas, 1 Tidak Puas. Tidak ada jawaban benar atau salah, pilih yang paling sesuai dengan pengalaman Anda.</div></details>
+    <details><summary>Halaman tertutup sebelum selesai, apakah isian hilang?</summary><div>Tidak. Isian tersimpan otomatis di perangkat Anda. Buka kembali halaman ini dengan perangkat dan browser yang sama, lalu lanjutkan dari bagian terakhir. Draf dihapus setelah jawaban berhasil dikirim.</div></details>
+    <details><summary>Mengapa tombol Lanjut tidak bisa dilanjutkan?</summary><div>Pertanyaan bertanda <b>*</b> wajib diisi. Bagian yang masih kosong akan ditandai merah agar mudah ditemukan.</div></details>
+    <details><summary>Bagaimana jika ada kendala atau pertanyaan lain?</summary><div>Hubungi sekolah melalui <a href="https://wa.me/6287856681523">WhatsApp</a>, telepon <a href="tel:+622624892181">(0262) 4892181</a>, atau email <a href="mailto:info@smkciledug.sch.id">info@smkciledug.sch.id</a>. Layanan Senin–Jumat, 07.00–16.00 WIB.</div></details>
+  </div>
+</dialog>
+
+<script>
+/* ============ KONFIGURASI ============
+   Tempel URL Web App Google Apps Script (berakhiran /exec) di bawah ini.
+   Cara membuatnya ada di file Code.gs. */
+const SCRIPT_URL = "";
+
+const LABELS={5:"Sangat Puas",4:"Puas",3:"Cukup Puas",2:"Kurang Puas",1:"Tidak Puas"};
+const ROLES=[
+ ["Guru","guru","Pendidik di sekolah","Guru & tenaga kependidikan","Anda menilai lingkungan sekolah dari sudut pandang pendidik."],
+ ["Staf / Tenaga Kependidikan","staf","Administrasi & penunjang","Guru & tenaga kependidikan","Anda menilai lingkungan sekolah dari sudut pandang tenaga kependidikan."],
+ ["Murid / Siswa","murid","Peserta didik","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai murid."],
+ ["Orang Tua / Wali Siswa","ortu","Keluarga peserta didik","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari sudut pandang orang tua atau wali."],
+ ["Masyarakat Umum / Tamu","tamu","Pengunjung & mitra sekolah","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai tamu atau masyarakat."]];
+const PH={"Guru":"Contoh: Guru TKJ","Staf / Tenaga Kependidikan":"Contoh: Tata Usaha","Murid / Siswa":"Contoh: XI TKJ 1","Orang Tua / Wali Siswa":"Contoh: Orang tua kelas X","Masyarakat Umum / Tamu":"Contoh: Instansi asal"};
+const SECTIONS=[
+  {title:"Kebersihan lingkungan sekolah",rate:["Kebersihan ruang kelas.","Kebersihan halaman dan lingkungan sekolah.","Kebersihan toilet sekolah.","Ketersediaan tempat sampah.","Kebersihan kantin dan area makan.","Kondisi lingkungan sekolah secara keseluruhan."]},
+  {title:"Kenyamanan lingkungan sekolah",rate:["Lingkungan sekolah terasa nyaman untuk belajar dan bekerja.","Kondisi ruang kelas mendukung kegiatan pembelajaran.","Pencahayaan ruang kelas sudah cukup baik.","Sirkulasi udara di lingkungan sekolah cukup baik.","Suasana sekolah mendukung konsentrasi dan kegiatan belajar.","Fasilitas umum sekolah memberikan kenyamanan bagi warga sekolah."]},
+  {title:"Keamanan dan ketertiban",rate:["Lingkungan sekolah terasa aman.","Keamanan fasilitas dan barang milik warga sekolah cukup baik.","Tata tertib sekolah diterapkan dengan baik.","Lingkungan sekolah cukup tertib.","Warga sekolah saling menjaga keamanan dan ketertiban."]},
+  {title:"Fasilitas dan sarana prasarana",rate:["Kondisi meja dan kursi cukup baik.","Fasilitas pembelajaran tersedia dan dapat digunakan dengan baik.","Fasilitas toilet cukup memadai.","Fasilitas ibadah dapat digunakan dengan nyaman.","Fasilitas olahraga cukup memadai.","Sarana pendukung lainnya cukup memenuhi kebutuhan warga sekolah."]},
+  {title:"Pelayanan dan lingkungan sosial",rate:["Guru memberikan pelayanan dengan baik.","Tenaga kependidikan memberikan pelayanan dengan baik.","Warga sekolah saling menghargai.","Lingkungan sekolah mendukung sikap disiplin dan tanggung jawab.","Lingkungan sekolah mendukung terciptanya hubungan yang harmonis.","Sekolah memberikan perhatian terhadap kenyamanan warga sekolah."]},
+  {title:"Penilaian keseluruhan",desc:"Tuliskan kesan dan masukan Anda.",fields:[
+    {t:"radio",label:"Secara keseluruhan, seberapa puas Anda terhadap lingkungan SMKS Ciledug Al Musaddadiyah Garut?",req:1,opts:["Sangat Puas","Puas","Cukup Puas","Kurang Puas","Tidak Puas"]},
+    {t:"radio",label:"Apakah lingkungan sekolah saat ini sudah mendukung kegiatan belajar dan bekerja dengan baik?",req:1,opts:["Sangat Mendukung","Mendukung","Cukup Mendukung","Kurang Mendukung","Tidak Mendukung"]},
+    {t:"area",label:"Apa hal yang paling Anda sukai dari lingkungan SMKS Ciledug Al Musaddadiyah Garut?"},
+    {t:"area",label:"Apa yang perlu diperbaiki dari lingkungan sekolah?"},
+    {t:"area",label:"Fasilitas atau lingkungan apa yang menurut Anda perlu mendapatkan perhatian lebih?"},
+    {t:"area",label:"Saran atau masukan lainnya untuk meningkatkan kenyamanan lingkungan sekolah"}]}
+];
+
+/* ---- Ikon (garis tipis, seragam) ---- */
+const P={
+ guru:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 9h6M7 12h4"/>',
+ staf:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+ murid:'<path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
+ ortu:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14.2c2.4 0 4 1.8 4 4.3"/>',
+ tamu:'<circle cx="10" cy="8" r="3.5"/><path d="M3 20c0-3.5 3-6 7-6 1.2 0 2.3.2 3.3.6"/><path d="m15 18 2 2 4-4.5"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ shield:'<path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/>',
+ cloud:'<path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1 0 9H7z"/><path d="m9.5 13.5 2 2 3.5-3.5"/>',
+ check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+ leaf:'<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c2-5 5-8 9-10"/>',
+ home:'<path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+ lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+ build:'<rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/>',
+ heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ help:'<circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/>',
+ badge:'<path d="M12 3l2.4 1.7 2.9-.2 1 2.8 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.8-2.9-.2L12 21l-2.4-1.7-2.9.2-1-2.8L3.3 15l.9-2.8-.9-2.8 2.4-1.7 1-2.8 2.9.2z"/><path d="m9 12 2 2 4-4"/>',
+ x:'<path d="M6 6l12 12M18 6 6 18"/>'};
+const ico=(k,w=1.7)=>`<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k]}</svg>`;
+const MOUTH={1:'M8.5 16.8c1-1.5 2.2-2.2 3.5-2.2s2.5.7 3.5 2.2',2:'M9 16c.9-.7 1.9-1 3-1s2.1.3 3 1',3:'M9 15.5h6',4:'M8.8 14.6c.9 1 2 1.5 3.2 1.5s2.3-.5 3.2-1.5',5:'M8 14h8c-.5 2.6-2.1 3.8-4 3.8S8.5 16.6 8 14z'};
+const face=n=>`<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="9" cy="9.6" r=".6" fill="currentColor"/><circle cx="15" cy="9.6" r=".6" fill="currentColor"/><path d="${MOUTH[n]}"/></svg>`;
+const $=s=>document.querySelector(s),KEY="survei-calm-v2";
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.querySelectorAll("[data-ic]").forEach(e=>e.innerHTML=ico(e.dataset.ic,e.classList.contains("ok")?2.4:1.7));
+
+/* ---- Halaman masuk: pilihan peran ---- */
+const FIELDS=[{label:"Nama lengkap",req:1,t:"text"},{label:"Kategori responden",req:1,t:"radio"},{label:"Unit kerja",t:"text"}];
+let g="",rh="";
+ROLES.forEach(r=>{
+  if(r[3]!==g){if(g)rh+="</div>";g=r[3];rh+=`<div class="grp">${g}</div><div class="roles">`}
+  rh+=`<label class="role"><input type="radio" name="f1" value="${esc(r[0])}"><span>${ico(r[1])}<em><strong>${r[0]}</strong><small>${r[2]}</small></em><b class="tick">${ico("check",3)}</b></span></label>`;
+});
+$("#roles").innerHTML=rh+"</div>";
+
+/* ---- Bangun langkah survei ---- */
+const stepsEl=$("#steps");
+SECTIONS.forEach((s,si)=>{
+  let h=`<div class="step"><h2>${s.title}</h2><div class="sub"><span>${s.desc||"Pilih penilaian yang paling sesuai untuk setiap pernyataan."}</span><span class="count"></span></div>`;
+  if(s.rate){
+    h+=`<div class="legend">1 = Tidak puas &nbsp;·&nbsp; 5 = Sangat puas</div>`;
+    s.rate.forEach(q=>{
+      const id=FIELDS.push({label:q,req:1,t:"rate"})-1;
+      h+=`<div class="item" data-f="${id}"><p>${esc(q)} <span class="req">*</span></p><div class="rate">`+
+        [1,2,3,4,5].map(n=>`<label class="opt"><input type="radio" name="f${id}" value="${n} – ${LABELS[n]}" aria-label="${n} – ${LABELS[n]}"><span><em>${face(n)}</em><b>${n}</b><small>${LABELS[n]}</small></span></label>`).join("")+`</div></div>`;
+    });
+  }else s.fields.forEach(f=>{
+    const id=FIELDS.push(f)-1,star=f.req?' <span class="req">*</span>':'';
+    h+=`<div class="f" data-f="${id}">`;
+    if(f.t==="area")h+=`<label for="f${id}">${f.label}${star}</label><textarea id="f${id}" name="f${id}" placeholder="Tulis di sini (opsional)"></textarea>`;
+    if(f.t==="radio")h+=`<div class="q">${f.label}${star}</div><div class="opts">`+f.opts.map(o=>`<label class="opt"><input type="radio" name="f${id}" value="${esc(o)}"><span>${o}</span></label>`).join("")+`</div>`;
+    h+=`</div>`;
+  });
+  stepsEl.insertAdjacentHTML("beforeend",h+"</div>");
+  $("#nav").insertAdjacentHTML("beforeend",`<li><button type="button"><span class="dot">${si+1}</span>${s.title}</button></li>`);
+});
+
+/* ---- Nilai & draf ---- */
+const val=id=>{const e=document.querySelector(`[name=f${id}]`);if(!e)return"";
+  if(e.type==="radio"){const c=document.querySelector(`[name=f${id}]:checked`);return c?c.value:""}
+  return e.value.trim()};
+let cur=0,max=0,timer;
+const N=SECTIONS.length,steps=[...document.querySelectorAll(".step")],navs=[...document.querySelectorAll("#nav li")];
+function save(){
+  try{const v={};FIELDS.forEach((f,i)=>{const x=val(i);if(x)v[i]=x});
+    localStorage.setItem(KEY,JSON.stringify({v,step:cur,max,started:document.body.dataset.stage==="survey"}));
+    if(document.body.dataset.stage==="survey"){const b=$("#saved");b.classList.add("on");clearTimeout(timer);timer=setTimeout(()=>b.classList.remove("on"),1500)}}catch(e){}
+}
+let started=false;
+function restore(){
+  try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;
+    Object.entries(d.v).forEach(([i,x])=>{
+      const r=[...document.querySelectorAll(`[name=f${i}]`)];if(!r.length)return;
+      if(r[0].type==="radio"){const m=r.find(e=>e.value===x);if(m)m.checked=true}else r[0].value=x});
+    max=Math.min(d.max||0,N-1);cur=Math.min(d.step||0,max);
+    started=!!(d.started&&d.v[0]&&d.v[1])}catch(e){}
+}
+function ph(){
+  $("#f2").placeholder=PH[val(1)]||"Contoh: SMK CALM";
+  $("#hint").textContent=(ROLES.find(r=>r[0]===val(1))||[])[4]||"Pilih peran Anda untuk melanjutkan.";
+}
+
+/* ---- Navigasi survei ---- */
+function counts(){steps.forEach(st=>{const w=[...st.querySelectorAll("[data-f]")],a=w.filter(x=>val(x.dataset.f)).length;
+  st.querySelector(".count").textContent=a+" / "+w.length+" terisi"})}
+function show(i,scroll=true){
+  cur=i;max=Math.max(max,i);
+  steps.forEach((s,k)=>s.classList.toggle("on",k===i));
+  navs.forEach((n,k)=>{n.className=k===i?"cur":k<i?"done":"";n.querySelector("button").disabled=k>max;
+    n.querySelector(".dot").textContent=k<i?"✓":k+1});
+  $("#pbar").style.width=((i+1)/N*100)+"%";
+  $("#back").textContent=i?"Kembali":"Ubah identitas";
+  $("#next").textContent=i===N-1?"Kirim jawaban":"Lanjut";
+  $("#msg").style.display="none";counts();
+  if(scroll)window.scrollTo({top:$("#form").offsetTop-70});
+}
+navs.forEach((n,k)=>n.querySelector("button").onclick=()=>{if(k<=max)show(k)});
+function enter(){
+  const nm=val(0),r=val(1);
+  $("#hello").textContent=`Halo, ${nm}. Anda mengisi sebagai ${r}. Beri penilaian untuk setiap pernyataan di bawah ini.`;
+  document.body.dataset.stage="survey";window.scrollTo(0,0);show(cur,false);save();
+}
+$("#start").onclick=()=>{
+  const n=!val(0),r=!val(1);
+  $("#fw0").classList.toggle("bad",n);$("#rw").classList.toggle("bad",r);
+  const m=$("#wmsg");m.style.display=(n||r)?"block":"none";
+  if(n||r){m.textContent=n&&r?"Pilih peran dan isi nama lengkap Anda.":r?"Pilih peran Anda terlebih dahulu.":"Nama lengkap wajib diisi.";return}
+  enter();
+};
+function valid(){
+  let first=null;
+  steps[cur].querySelectorAll("[data-f]").forEach(w=>{
+    const bad=FIELDS[w.dataset.f].req&&!val(w.dataset.f);
+    w.classList.toggle("bad",!!bad);if(bad&&!first)first=w});
+  if(first){const m=$("#msg");m.textContent="Masih ada isian wajib yang kosong. Bagian yang perlu dilengkapi ditandai merah.";m.style.display="block";
+    first.scrollIntoView({block:"center",behavior:"smooth"})}
+  return !first;
+}
+document.addEventListener("change",e=>{
+  const w=e.target.closest("[data-f]");if(!w)return;
+  w.classList.remove("bad");counts();save();
+  if(e.target.name==="f1"){ph();$("#wmsg").style.display="none"}
+  if(e.target.type==="radio"&&FIELDS[w.dataset.f].t==="rate"){
+    const nx=[...steps[cur].querySelectorAll(".item")].find(x=>!val(x.dataset.f));
+    setTimeout(()=>(nx||$(".nav")).scrollIntoView({block:nx?"center":"end",behavior:"smooth"}),260);
+  }
+});
+document.addEventListener("input",e=>{if(e.target.closest("[data-f]")){e.target.closest("[data-f]").classList.remove("bad");counts();save()}});
+$("#back").onclick=()=>{
+  if(cur){show(cur-1)}else{document.body.dataset.stage="welcome";window.scrollTo(0,0);fit()}
+  save();
+};
+$("#next").onclick=()=>{if(!valid())return;if(cur<N-1){show(cur+1);save()}else send()};
+
+/* ---- Pas satu layar (laptop pendek) ---- */
+function fit(){
+  const fi=$(".fi");if(!fi||document.body.dataset.stage!=="welcome")return;
+  fi.style.zoom="";fi.style.maxWidth="";
+  if(innerWidth<=900||!("zoom" in fi.style))return;
+  const need=fi.offsetHeight+40,z=Math.max(.7,Math.min(1,innerHeight/need));
+  if(z<1){fi.style.zoom=z;fi.style.maxWidth=Math.round(560/z)+"px"}
+}
+addEventListener("resize",fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+
+/* ---- FAQ ---- */
+document.querySelectorAll("[data-faq]").forEach(b=>b.onclick=()=>$("#faqd").showModal());
+$("#faqx").onclick=()=>$("#faqd").close();
+$("#faqd").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
+
+/* ---- Kirim ke Google Sheet (Apps Script) ---- */
+async function send(){
+  const m=$("#msg"),b=$("#next");
+  if(!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)){
+    m.textContent="Konfigurasi belum lengkap: isi SCRIPT_URL dengan alamat Web App Apps Script.";m.style.display="block";return}
+  b.disabled=true;b.textContent="Mengirim…";
+  try{
+    await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
+    const r=FIELDS.map((f,i)=>f.t==="rate"?parseInt(val(i)):0).filter(Boolean);
+    $("#avg").innerHTML=`Rata-rata penilaian Anda <b>${(r.reduce((a,c)=>a+c,0)/r.length).toFixed(1)}</b> / 5`;
+    try{localStorage.removeItem(KEY)}catch(e){}
+    $("#form").hidden=true;$(".side").style.display="none";$("#app").style.gridTemplateColumns="1fr";
+    $("#done").hidden=false;window.scrollTo({top:0,behavior:"smooth"});
+  }catch(err){
+    m.textContent="Pengiriman gagal. Periksa koneksi internet lalu coba lagi. Jawaban Anda aman di perangkat ini.";m.style.display="block";
+    b.disabled=false;b.textContent="Kirim jawaban"}
+}
+restore();ph();
+if(started)enter();else{show(0,false);fit()}
+</script>
+</body>
+</html>
