@@ -342,6 +342,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
    Tempel URL Web App Google Apps Script (berakhiran /exec) di bawah ini.
    Cara membuatnya ada di file Code.gs. */
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAs_OSwQh94JgE_7hWGlOnMDw58PCWzVoTaQ86WW1YEIa88_5s9Npdrx2_SbiPz_dn/exec";
+
 const LABELS={5:"Sangat Puas",4:"Puas",3:"Cukup Puas",2:"Kurang Puas",1:"Tidak Puas"};
 const ROLES=[
  ["Guru","guru","Pendidik di sekolah","Guru & tenaga kependidikan","Anda menilai lingkungan sekolah dari sudut pandang pendidik."],
@@ -524,14 +525,17 @@ async function send(){
     m.textContent="Konfigurasi belum lengkap: isi SCRIPT_URL dengan alamat Web App Apps Script.";m.style.display="block";return}
   b.disabled=true;b.textContent="Mengirim…";
   try{
-    await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
+    const res=await fetch(SCRIPT_URL,{method:"POST",redirect:"follow",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
+    let j;try{j=await res.json()}catch(x){throw new Error("akses")}
+    if(!j||!j.ok)throw new Error("server:"+(j&&j.error||"tidak diketahui"));
     const r=FIELDS.map((f,i)=>f.t==="rate"?parseInt(val(i)):0).filter(Boolean);
     $("#avg").innerHTML=`Rata-rata penilaian Anda <b>${(r.reduce((a,c)=>a+c,0)/r.length).toFixed(1)}</b> / 5`;
     try{localStorage.removeItem(KEY)}catch(e){}
     $("#form").hidden=true;$(".side").style.display="none";$("#app").style.gridTemplateColumns="1fr";
     $("#done").hidden=false;window.scrollTo({top:0,behavior:"smooth"});
   }catch(err){
-    m.textContent="Pengiriman gagal. Periksa koneksi internet lalu coba lagi. Jawaban Anda aman di perangkat ini.";m.style.display="block";
+    const e=String(err&&err.message||"");
+    m.textContent=e==="akses"?"Pengiriman ditolak: Web App belum dibuka untuk umum. Hubungi admin sekolah. Jawaban Anda aman di perangkat ini.":e.indexOf("server:")===0?"Server menolak jawaban ("+e.slice(7)+"). Hubungi admin sekolah. Jawaban Anda aman di perangkat ini.":"Pengiriman gagal. Periksa koneksi internet lalu coba lagi. Jawaban Anda aman di perangkat ini.";m.style.display="block";
     b.disabled=false;b.textContent="Kirim jawaban"}
 }
 restore();ph();
