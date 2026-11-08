@@ -11,15 +11,15 @@
 <meta name="description" content="Survei persepsi dan kepuasan warga SMKS Ciledug Al Musaddadiyah Garut terhadap lingkungan sekolah.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light dark;--bg:#f3f6fb;--card:#fff;--ink:#0e1a33;--hd:#12285f;--mute:#5b6a87;--line:#dfe6f2;--p:#1b3f92;--p2:#2d5fcf;--soft:#e8eefb;--gold:#c8a24b;--amber:#f2b01e;--ok:#0f9b64;--err:#d32f22;
 --r1:10px;--r2:14px;--r3:20px;--r4:28px;--th:60px;--ease:cubic-bezier(.2,.7,.2,1);
---sh:0 1px 2px rgba(14,26,51,.04),0 16px 40px -16px rgba(11,61,145,.2);--serif:"Plus Jakarta Sans",system-ui,sans-serif}
+--sh:0 1px 2px rgba(14,26,51,.04),0 16px 40px -16px rgba(11,61,145,.2);--serif:"DM Sans",system-ui,sans-serif}
 @media(prefers-color-scheme:dark){:root{--bg:#0a1222;--card:#101b31;--ink:#e8eefb;--hd:#f1f5ff;--mute:#9aaac8;--line:#22314f;--p:#3b6fe0;--p2:#6ea2ff;--soft:#172a4d;--ok:#34d399;--err:#ff8a80;--sh:0 16px 40px -16px rgba(0,0,0,.65)}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;color:var(--ink);font:400 16px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:var(--bg)}
+body{margin:0;color:var(--ink);font:400 16px/1.6 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:var(--bg)}
 .i{width:1em;height:1em;display:block}
 button{font-family:inherit}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
@@ -39,7 +39,9 @@ body[data-stage=survey] footer{display:block}
 .tile img{max-width:100%;max-height:100%}
 .brand b{display:block;font-size:19px;line-height:1.2;letter-spacing:.01em}
 .brand span{font-size:14.5px;color:rgba(255,255,255,.76)}
-.bp h1{font:600 clamp(32px,min(4.6vw,7.4vh),64px)/1.06 var(--serif);margin:clamp(18px,6vh,100px) 0 0;letter-spacing:-.015em;text-wrap:balance}
+.pill{display:inline-block;align-self:flex-start;margin-top:clamp(18px,5vh,72px);padding:6px 14px;border-radius:99px;background:var(--amber);color:#0a1f4d;font:700 11.5px/1.4 var(--serif);letter-spacing:.12em;text-transform:uppercase}
+.bp .pill+h1{margin-top:18px}
+.bp h1{font:700 clamp(32px,min(4.6vw,7.4vh),64px)/1.06 var(--serif);margin:clamp(18px,6vh,100px) 0 0;letter-spacing:-.015em;text-wrap:balance}
 .rule{width:56px;height:3px;border-radius:3px;background:var(--gold);margin:clamp(14px,3vh,28px) 0}
 .bp p{margin:0;font-size:clamp(15px,2.3vh,18px);line-height:1.65;max-width:46ch;color:rgba(255,255,255,.86)}
 .feats{list-style:none;margin:clamp(14px,3.5vh,40px) 0 0;padding:0;max-width:540px}
@@ -61,7 +63,7 @@ body[data-stage=survey] footer{display:block}
 .bf small{color:rgba(255,255,255,.72)}
 .fp{display:flex;align-items:center;justify-content:center;padding:clamp(16px,3vh,40px) 24px;background:var(--card)}
 .fi{width:100%;max-width:560px}
-.fi h2{font:700 clamp(30px,3.6vw,38px)/1.1 var(--serif);color:var(--hd);margin:0 0 8px;letter-spacing:-.015em}
+.fi h2{font:700 clamp(30px,3.6vw,38px)/1.1 var(--serif);color:var(--hd);margin:0 0 8px;letter-spacing:-.025em}
 .fi>p{margin:0 0 clamp(12px,2.5vh,22px);color:var(--mute);font-size:16px}
 .lr{display:flex;justify-content:space-between;align-items:center;font-weight:600}
 .lnk{all:unset;cursor:pointer;color:var(--mute);font-size:14.5px;display:inline-flex;align-items:center;gap:6px;min-height:32px;border-radius:8px}
@@ -86,6 +88,16 @@ body[data-stage=survey] footer{display:block}
 .tick{display:none;flex:none;width:24px;height:24px;border-radius:50%;background:var(--p);color:#fff;place-items:center;font-size:14px}
 .role input:checked+span .tick{display:grid}
 .rw.bad .role>span{border-color:var(--err)}
+select{width:100%;height:52px;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r2);padding:0 46px 0 48px;appearance:none;-webkit-appearance:none;cursor:pointer;text-overflow:ellipsis;transition:border-color .2s,background .2s,box-shadow .2s}
+select:focus{outline:none;border-color:var(--p2);background:var(--card);box-shadow:0 0 0 4px var(--soft)}
+select:disabled{opacity:.55;cursor:not-allowed}
+select:has(option[value=""]:checked){color:color-mix(in srgb,var(--mute) 85%,transparent)}
+option,optgroup{color:var(--ink);background:var(--card);font-style:normal}
+optgroup{font-weight:700}
+.inp.sel::after{content:"";position:absolute;right:20px;top:50%;width:8px;height:8px;border:solid var(--mute);border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.inp.plain select{padding-left:16px}
+.rw .inp{margin-top:8px}
+.rw.bad select,.f.bad select{border-color:var(--err)}
 .hint{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:var(--r2);padding:10px 16px;font-size:14px;color:var(--mute);margin:14px 0 0}
 .hint::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .fp .f{margin:14px 0 0}
@@ -121,7 +133,7 @@ body[data-stage=survey] footer{display:block}
 .ghost i{width:17px;height:17px;display:inline-block;color:var(--p)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .head{padding:44px 0 28px;max-width:720px}
-.head h1{font:700 clamp(28px,4.5vw,40px)/1.15 var(--serif);color:var(--hd);margin:0 0 10px;letter-spacing:-.015em;text-wrap:balance}
+.head h1{font:700 clamp(28px,4.5vw,40px)/1.15 var(--serif);color:var(--hd);margin:0 0 10px;letter-spacing:-.025em;text-wrap:balance}
 .head p{margin:0;color:var(--mute);font-size:17px;max-width:62ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .chips span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 13px;font-size:13px;font-weight:600;color:var(--mute)}
@@ -173,12 +185,12 @@ input:focus,textarea:focus{outline:none;border-color:var(--p2);background:var(--
 .rate b{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
 .rate small{font-size:11.5px;font-weight:600;color:var(--mute)}
 @media(hover:hover){.rate .opt:hover em{color:var(--p2);transform:scale(1.1)}}
-.rate .opt input:checked+span{background:var(--p);border-color:var(--p);box-shadow:0 10px 20px -10px var(--p)}
+.rate .opt input:checked+span{background:linear-gradient(135deg,var(--p),var(--p2));border-color:var(--p);box-shadow:0 10px 20px -10px var(--p)}
 .rate .opt input:checked+span em{color:#fff;transform:scale(1.1)}
 .rate .opt input:checked+span b,.rate .opt input:checked+span small{color:#fff}
 .legend{font-size:13px;color:var(--mute);margin:-10px 0 10px}
 .nav{position:sticky;bottom:0;z-index:10;display:flex;justify-content:space-between;gap:12px;padding:16px 36px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.pri,.sec{font:700 15px "Plus Jakarta Sans",sans-serif;min-height:48px;border-radius:var(--r2);padding:0 28px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;border:1.5px solid transparent}
+.pri,.sec{font:700 15px "DM Sans",sans-serif;min-height:48px;border-radius:var(--r2);padding:0 28px;cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;border:1.5px solid transparent}
 .pri{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;margin-left:auto;box-shadow:0 12px 22px -12px var(--p)}
 @media(hover:hover){.pri:hover{transform:translateY(-1px)}.sec:hover{border-color:var(--p2)}}
 .pri:active,.sec:active{transform:scale(.98)}
@@ -249,6 +261,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
       <div class="tile"><img alt="Logo SMKS Ciledug Al Musaddadiyah" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD-8YPFS6i86EyZZNDUhwuam5ro_mtc9So2muvB7EDWz1Zp6rarLubvVS3vfVVoto_S6SaHlIPPnmNaddUugGUztWkJYhDwwT8CU1BcUuq9TNyxnHKa6B44iDBx6LjR1-z3r7_C34jviaWeOYgk4bNJHsziPV4KR5mQjY69HVhyphenhyphenR3STD4xp-b46x_HeR4/s160/An8Em6pLCtVUNFZTK-rgdQG9pKiDxE1AR7m_1QO_5slD3C5qFXYq7S9suI1ztpViB_aUnbOGE2-Y71AU9SF3GjQzZ09xbw5aat-JT_7ptJ4VcfdGeJ73DWbHD9IDtVHa_16MjCj09HJ4eGBvZMo-removebg-preview.png"></div>
       <div><b>SMK CALM</b><span>SMKS Ciledug Al Musaddadiyah Garut</span></div>
     </div>
+    <span class="pill">Survei kepuasan warga sekolah</span>
     <h1>Harmoni Lingkungan Sekolah</h1>
     <div class="rule"></div>
     <p>Survei persepsi dan kepuasan bersama untuk menciptakan lingkungan sekolah yang nyaman, aman, bersih, sehat, tertib, dan mendukung proses pembelajaran.</p>
@@ -269,17 +282,15 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
     <h2>Selamat datang</h2>
     <p>Lengkapi identitas Anda untuk memulai survei.</p>
     <div class="rw" id="rw" data-f="1">
-      <div class="lr"><span>Isi sebagai <span class="req">*</span></span>
+      <div class="lr"><label for="f1">Isi sebagai <span class="req">*</span></label>
         <button type="button" class="lnk" data-faq><i data-ic="help"></i>Pertanyaan umum</button></div>
-      <div id="roles"></div>
+      <div class="inp sel"><span data-ic="ortu"></span><select id="f1" name="f1" autocomplete="off"></select></div>
     </div>
     <div class="hint" id="hint">Pilih peran Anda untuk melanjutkan.</div>
-    <div class="two">
     <div class="f" id="fw0" data-f="0"><label for="f0">Nama lengkap <span class="req">*</span></label>
       <div class="inp"><span data-ic="user"></span><input type="text" id="f0" name="f0" autocomplete="name" placeholder="Nama lengkap Anda"></div></div>
-    <div class="f" data-f="2"><label for="f2">Unit kerja / kelas <small>(opsional)</small></label>
-      <div class="inp"><span data-ic="build"></span><input type="text" id="f2" name="f2" autocomplete="off"></div></div>
-    </div>
+    <div class="f" data-f="2"><label for="f2" id="l2">Unit kerja / kelas</label>
+      <div class="inp sel"><span data-ic="build"></span><select id="f2" name="f2" autocomplete="off" disabled></select></div></div>
     <div class="wmsg" id="wmsg" role="alert"></div>
     <button type="button" class="pri go" id="start">Mulai survei <span data-ic="arrow"></span></button>
     <div class="stat">Jawaban tersimpan otomatis di perangkat ini</div>
@@ -328,7 +339,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
 <dialog id="faqd" aria-labelledby="faqh">
   <div class="dh"><h2 id="faqh">Pertanyaan yang sering diajukan</h2><button type="button" class="x" id="faqx" aria-label="Tutup" data-ic="x"></button></div>
   <div class="db">
-    <details><summary>Siapa saja yang boleh mengisi survei ini?</summary><div>Seluruh warga sekolah: guru, tenaga kependidikan, murid, orang tua atau wali, serta masyarakat umum dan tamu yang pernah berinteraksi dengan lingkungan SMKS Ciledug Al Musaddadiyah Garut.</div></details>
+    <details><summary>Siapa saja yang boleh mengisi survei ini?</summary><div>Seluruh warga sekolah: guru, tenaga kependidikan, murid, alumni, orang tua atau wali, serta masyarakat umum dan tamu yang pernah berinteraksi dengan lingkungan SMKS Ciledug Al Musaddadiyah Garut.</div></details>
     <details><summary>Untuk apa hasil survei ini digunakan?</summary><div>Hasilnya menjadi bahan evaluasi dan perbaikan untuk menciptakan lingkungan sekolah yang nyaman, aman, bersih, sehat, tertib, dan mendukung proses pembelajaran.</div></details>
     <details><summary>Berapa lama waktu pengisian?</summary><div>Sekitar 5 menit. Setelah identitas, ada enam bagian: lima kelompok penilaian, lalu penilaian keseluruhan dan saran.</div></details>
     <details><summary>Bagaimana cara membaca skala penilaian?</summary><div>Skala 1 sampai 5: 5 Sangat Puas, 4 Puas, 3 Cukup Puas, 2 Kurang Puas, 1 Tidak Puas. Tidak ada jawaban benar atau salah, pilih yang paling sesuai dengan pengalaman Anda.</div></details>
@@ -346,10 +357,11 @@ const LABELS={5:"Sangat Puas",4:"Puas",3:"Cukup Puas",2:"Kurang Puas",1:"Tidak P
 const ROLES=[
  ["Guru","guru","Pendidik di sekolah","Guru & tenaga kependidikan","Anda menilai lingkungan sekolah dari sudut pandang pendidik."],
  ["Staf / Tenaga Kependidikan","staf","Administrasi & penunjang","Guru & tenaga kependidikan","Anda menilai lingkungan sekolah dari sudut pandang tenaga kependidikan."],
- ["Murid / Siswa","murid","Peserta didik","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai murid."],
- ["Orang Tua / Wali Siswa","ortu","Keluarga peserta didik","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari sudut pandang orang tua atau wali."],
- ["Masyarakat Umum / Tamu","tamu","Pengunjung & mitra sekolah","Siswa, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai tamu atau masyarakat."]];
-const PH={"Guru":"Contoh: Guru TKJ","Staf / Tenaga Kependidikan":"Contoh: Tata Usaha","Murid / Siswa":"Contoh: XI TKJ 1","Orang Tua / Wali Siswa":"Contoh: Orang tua kelas X","Masyarakat Umum / Tamu":"Contoh: Instansi asal"};
+ ["Murid / Siswa","murid","Peserta didik","Siswa, alumni, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai murid."],
+ ["Alumni","alumni","Lulusan SMK CALM","Siswa, alumni, keluarga & umum","Anda menilai lingkungan sekolah berdasarkan pengalaman sebagai alumni."],
+ ["Orang Tua / Wali Siswa","ortu","Keluarga peserta didik","Siswa, alumni, keluarga & umum","Anda menilai lingkungan sekolah dari sudut pandang orang tua atau wali."],
+ ["Masyarakat Umum / Tamu","tamu","Pengunjung & mitra sekolah","Siswa, alumni, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai tamu atau masyarakat."]];
+const PH={"Guru":"Contoh: Guru TKJ","Staf / Tenaga Kependidikan":"Contoh: Tata Usaha","Murid / Siswa":"Contoh: XI TKJ 1","Alumni":"Contoh: Angkatan 2022, TKJ","Orang Tua / Wali Siswa":"Contoh: Orang tua kelas X","Masyarakat Umum / Tamu":"Contoh: Instansi asal"};
 const SECTIONS=[
   {title:"Kebersihan lingkungan sekolah",rate:["Kebersihan ruang kelas.","Kebersihan halaman dan lingkungan sekolah.","Kebersihan toilet sekolah.","Ketersediaan tempat sampah.","Kebersihan kantin dan area makan.","Kondisi lingkungan sekolah secara keseluruhan."]},
   {title:"Kenyamanan lingkungan sekolah",rate:["Lingkungan sekolah terasa nyaman untuk belajar dan bekerja.","Kondisi ruang kelas mendukung kegiatan pembelajaran.","Pencahayaan ruang kelas sudah cukup baik.","Sirkulasi udara di lingkungan sekolah cukup baik.","Suasana sekolah mendukung konsentrasi dan kegiatan belajar.","Fasilitas umum sekolah memberikan kenyamanan bagi warga sekolah."]},
@@ -371,6 +383,7 @@ const P={
  staf:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
  murid:'<path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6"/>',
  ortu:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M17 14.2c2.4 0 4 1.8 4 4.3"/>',
+ alumni:'<circle cx="12" cy="9" r="5"/><path d="m8.6 13.2-1.6 7.3 5-2.5 5 2.5-1.6-7.3M10 9l1.5 1.5L14.3 7.6"/>',
  tamu:'<circle cx="10" cy="8" r="3.5"/><path d="M3 20c0-3.5 3-6 7-6 1.2 0 2.3.2 3.3.6"/><path d="m15 18 2 2 4-4.5"/>',
  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
  shield:'<path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/>',
@@ -395,12 +408,22 @@ document.querySelectorAll("[data-ic]").forEach(e=>e.innerHTML=ico(e.dataset.ic,e
 
 /* ---- Halaman masuk: pilihan peran ---- */
 const FIELDS=[{label:"Nama lengkap",req:1,t:"text"},{label:"Kategori responden",req:1,t:"radio"},{label:"Unit kerja",t:"text"}];
-let g="",rh="";
-ROLES.forEach(r=>{
-  if(r[3]!==g){if(g)rh+="</div>";g=r[3];rh+=`<div class="grp">${g}</div><div class="roles">`}
-  rh+=`<label class="role"><input type="radio" name="f1" value="${esc(r[0])}"><span>${ico(r[1])}<em><strong>${r[0]}</strong><small>${r[2]}</small></em><b class="tick">${ico("check",3)}</b></span></label>`;
-});
-$("#roles").innerHTML=rh+"</div>";
+const JUR=[["AKL","Akuntansi Keuangan Lembaga"],["Bisnis Digital","Bisnis Digital"],["DKV","Desain Komunikasi Visual"],["TKJ","Teknik Komputer & Jaringan"],["TKR","Teknik Kendaraan Ringan"],["TSM","Teknik Sepeda Motor"],["MP","Manajemen Perkantoran"]];
+const opt=(v,t)=>`<option value="${esc(v)}">${esc(t||v)}</option>`,grp=(l,o)=>`<optgroup label="${esc(l)}">${o}</optgroup>`,many=a=>a.map(x=>opt(x)).join("");
+const jur=pre=>JUR.map(j=>opt(pre+j[0],j[0]+" — "+j[1])).join("");
+const KLS=["X","XI","XII"],kelas=()=>KLS.map(k=>grp("Kelas "+k,jur(k+" "))).join(""),tahun=()=>{const y=new Date().getFullYear(),o=[];for(let i=y;i>=2000;i--)o.push("Lulusan "+i);o.push("Lulusan sebelum 2000");return many(o)};
+const UNITS={
+ "Guru":["Jurusan / unit",()=>grp("Jurusan",jur(""))+grp("Lainnya",many(["Mata pelajaran umum","Bimbingan Konseling (BK)","Pimpinan sekolah","Lainnya"]))],
+ "Staf / Tenaga Kependidikan":["Unit kerja",()=>many(["Tata Usaha","Keuangan","Perpustakaan","Laboratorium / bengkel","Sarana & prasarana","Keamanan & kebersihan","Lainnya"])],
+ "Murid / Siswa":["Kelas",kelas],
+ "Alumni":["Tahun lulus",tahun],
+ "Orang Tua / Wali Siswa":["Anak berada di kelas",()=>many(["Kelas X","Kelas XI","Kelas XII","Lebih dari satu anak"])],
+ "Masyarakat Umum / Tamu":["Asal / instansi",()=>many(["Instansi pemerintah","Perguruan tinggi","Sekolah lain","Perusahaan / mitra industri","Yayasan / organisasi","Masyarakat sekitar","Lainnya"])]};
+
+/* ---- Halaman masuk: pilihan peran (dropdown) ---- */
+let g="",rh='<option value="">Pilih peran Anda</option>';
+ROLES.forEach(r=>{if(r[3]!==g){if(g)rh+="</optgroup>";g=r[3];rh+=`<optgroup label="${esc(g)}">`}rh+=opt(r[0])});
+$("#f1").innerHTML=rh+"</optgroup>";
 
 /* ---- Bangun langkah survei ---- */
 const stepsEl=$("#steps");
@@ -417,7 +440,7 @@ SECTIONS.forEach((s,si)=>{
     const id=FIELDS.push(f)-1,star=f.req?' <span class="req">*</span>':'';
     h+=`<div class="f" data-f="${id}">`;
     if(f.t==="area")h+=`<label for="f${id}">${f.label}${star}</label><textarea id="f${id}" name="f${id}" placeholder="Tulis di sini (opsional)"></textarea>`;
-    if(f.t==="radio")h+=`<div class="q">${f.label}${star}</div><div class="opts">`+f.opts.map(o=>`<label class="opt"><input type="radio" name="f${id}" value="${esc(o)}"><span>${o}</span></label>`).join("")+`</div>`;
+    if(f.t==="radio")h+=`<label for="f${id}">${f.label}${star}</label><div class="inp sel plain"><select id="f${id}" name="f${id}"><option value="">Pilih jawaban</option>`+f.opts.map(o=>opt(o)).join("")+`</select></div>`;
     h+=`</div>`;
   });
   stepsEl.insertAdjacentHTML("beforeend",h+"</div>");
@@ -438,6 +461,7 @@ function save(){
 let started=false;
 function restore(){
   try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(!d)return;
+    if(d.v[1]){$("#f1").value=d.v[1];ph()}
     Object.entries(d.v).forEach(([i,x])=>{
       const r=[...document.querySelectorAll(`[name=f${i}]`)];if(!r.length)return;
       if(r[0].type==="radio"){const m=r.find(e=>e.value===x);if(m)m.checked=true}else r[0].value=x});
@@ -445,8 +469,12 @@ function restore(){
     started=!!(d.started&&d.v[0]&&d.v[1])}catch(e){}
 }
 function ph(){
-  $("#f2").placeholder=PH[val(1)]||"Contoh: SMK CALM";
-  $("#hint").textContent=(ROLES.find(r=>r[0]===val(1))||[])[4]||"Pilih peran Anda untuk melanjutkan.";
+  const r=val(1),u=UNITS[r],sel=$("#f2");
+  $("#hint").textContent=(ROLES.find(x=>x[0]===r)||[])[4]||"Pilih peran Anda untuk melanjutkan.";
+  if(sel.dataset.role===r)return;
+  sel.dataset.role=r;
+  if(u){$("#l2").textContent=u[0];sel.innerHTML=opt("","Pilih (opsional)")+u[1]();sel.disabled=false}
+  else{$("#l2").textContent="Unit kerja / kelas";sel.innerHTML=opt("","Pilih peran terlebih dahulu");sel.disabled=true}
 }
 
 /* ---- Navigasi survei ---- */
@@ -488,7 +516,7 @@ function valid(){
 document.addEventListener("change",e=>{
   const w=e.target.closest("[data-f]");if(!w)return;
   w.classList.remove("bad");counts();save();
-  if(e.target.name==="f1"){ph();$("#wmsg").style.display="none"}
+  if(e.target.name==="f1"){ph();$("#wmsg").style.display="none";save()}
   if(e.target.type==="radio"&&FIELDS[w.dataset.f].t==="rate"){
     const nx=[...steps[cur].querySelectorAll(".item")].find(x=>!val(x.dataset.f));
     setTimeout(()=>(nx||$(".nav")).scrollIntoView({block:nx?"center":"end",behavior:"smooth"}),260);
