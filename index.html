@@ -248,7 +248,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
  .dh{padding:18px 20px 8px}.db{padding:8px 20px calc(24px + env(safe-area-inset-bottom,0px))}
 }
 @media(max-width:560px){.roles,.two{grid-template-columns:1fr}.bp p{display:none}.rule{display:none}.bp h1{margin-top:20px}.step h2{font-size:23px}.sub{flex-wrap:wrap;gap:8px}#saved{font-size:12px}}
-@media(max-width:420px){.rate{gap:6px}.rate small{display:none}.rate .opt>span{min-height:72px}.rate em{font-size:26px}.chips span{font-size:12.5px;padding:5px 10px}}
+@media(max-width:420px){.rate{gap:6px}.rate small{font-size:10px;line-height:1.15}.rate .opt>span{min-height:88px;padding:8px 2px}.rate em{font-size:26px}.chips span{font-size:12.5px;padding:5px 10px}}
 .inp>span{left:0;top:1.5px;bottom:1.5px;transform:none;width:50px;place-items:center;border-right:1px solid var(--line);color:var(--p);font-size:19px}
 .inp input[type=text]{padding-left:66px}
 .inp.sel select{padding-left:66px}
@@ -273,6 +273,15 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
 .ok{box-shadow:0 0 0 12px color-mix(in srgb,var(--ok) 14%,transparent),0 18px 32px -14px var(--ok)}
 @media(max-width:560px){.si{width:46px;height:46px;font-size:22px;border-radius:14px}.sh{gap:12px}.inp>span{width:46px}.inp input[type=text],.inp.sel select{padding-left:60px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.help{display:block;margin-top:8px;font-size:13px;color:var(--mute);line-height:1.5}
+.rw.bad::after,.f.bad::after,.item.bad::after{display:block;margin-top:10px;color:var(--err);font-size:13px;font-weight:600;line-height:1.4}
+.rw.bad::after{content:"Pilih peran Anda."}
+.f.bad::after{content:"Bagian ini wajib diisi."}
+.item.bad::after{content:"Pilih salah satu penilaian."}
+.sp{font-weight:600;color:var(--mute)}
+.step h2:focus{outline:none}
+.off{background:#b3261e;color:#fff;text-align:center;font-size:13px;font-weight:600;padding:7px 14px}
+.ts{margin:0 auto 22px!important;font-size:13px}
 </style>
 </head>
 <body data-stage="welcome">
@@ -311,12 +320,12 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
     </div>
     <div class="hint"><span class="hic" id="hintic" data-ic="info"></span><span id="hint">Pilih peran Anda untuk melanjutkan.</span></div>
     <div class="f" id="fw0" data-f="0"><label for="f0">Nama lengkap <span class="req">*</span></label>
-      <div class="inp"><span data-ic="user"></span><input type="text" id="f0" name="f0" autocomplete="name" placeholder="Nama lengkap Anda"></div></div>
+      <div class="inp"><span data-ic="user"></span><input type="text" id="f0" name="f0" autocomplete="name" autocapitalize="words" enterkeyhint="go" maxlength="80" placeholder="Nama lengkap Anda"></div><small class="help">Nama hanya untuk pencatatan internal sekolah dan tidak ditampilkan pada hasil survei.</small></div>
     <div class="f" data-f="2"><label for="f2" id="l2">Unit kerja / kelas</label>
       <div class="inp sel"><span data-ic="build"></span><select id="f2" name="f2" autocomplete="off" disabled></select></div></div>
     <div class="wmsg" id="wmsg" role="alert"></div>
     <button type="button" class="pri go" id="start">Mulai survei <span data-ic="arrow"></span></button>
-    <div class="stat">Jawaban tersimpan otomatis di perangkat ini</div>
+    <div class="stat">Tersimpan otomatis di perangkat ini &middot; Hasil dipublikasikan tanpa nama</div>
     <div class="foot">Butuh bantuan? <a href="https://wa.me/6287856681523">Hubungi pihak sekolah</a>.</div>
   </div></section>
 </main>
@@ -327,7 +336,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
   <div><b>SMKS Ciledug Al Musaddadiyah</b><small>Survei kepuasan warga sekolah</small></div>
   <span id="saved">Draf tersimpan</span>
   <button type="button" class="ghost" data-faq><i data-ic="help"></i>FAQ</button>
-</div></div>
+</div><div class="off" id="off" role="status" hidden>Tidak ada koneksi internet. Jawaban tetap tersimpan di perangkat ini; kirim setelah tersambung kembali.</div></div>
 
 <div class="wrap">
   <header class="head">
@@ -353,7 +362,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
         <h2>Terima kasih atas partisipasi Anda!</h2>
         <p>Jawaban Anda sudah tersimpan dan akan menjadi bahan evaluasi untuk perbaikan lingkungan sekolah.</p>
         <div class="chips" style="justify-content:center;margin:0 0 24px"><span><i data-ic="cloud"></i>Jawaban tersimpan</span><span><i data-ic="shield"></i>Hasil dipublikasikan tanpa nama</span></div>
-        <div class="avg" id="avg"></div><br>
+        <div class="avg" id="avg"></div><p class="ts" id="ts"></p>
         <button class="sec" onclick="location.reload()">Isi survei lagi</button>
       </div>
     </section>
@@ -463,18 +472,18 @@ $("#f1").innerHTML=rh+"</optgroup>";
 /* ---- Bangun langkah survei ---- */
 const stepsEl=$("#steps");
 SECTIONS.forEach((s,si)=>{
-  let h=`<div class="step"><div class="sh"><span class="si">${ico(s.ic,1.6)}</span><div><span class="sn">Bagian ${si+1} dari ${SECTIONS.length}</span><h2>${s.title}</h2></div></div><div class="sub"><span>${s.desc||"Pilih penilaian yang paling sesuai untuk setiap pernyataan."}</span><span class="count"></span></div>`;
+  let h=`<div class="step"><div class="sh"><span class="si">${ico(s.ic,1.6)}</span><div><span class="sn">Bagian ${si+1} dari ${SECTIONS.length}<span class="sp"></span></span><h2 tabindex="-1">${s.title}</h2></div></div><div class="sub"><span>${s.desc||"Pilih penilaian yang paling sesuai untuk setiap pernyataan."}</span><span class="count"></span></div>`;
   if(s.rate){
-    h+=`<div class="legend">1 = Tidak puas &nbsp;·&nbsp; 5 = Sangat puas</div>`;
+    h+=`<div class="legend">1 = Tidak puas &nbsp;·&nbsp; 5 = Sangat puas &nbsp;·&nbsp; <span class="req">*</span> wajib diisi</div>`;
     s.rate.forEach((q,qi)=>{
       const id=FIELDS.push({label:q,req:1,t:"rate"})-1;
-      h+=`<div class="item" data-f="${id}"><p><b class="qn">${String(qi+1).padStart(2,"0")}</b><span>${esc(q)} <span class="req">*</span></span></p><div class="rate">`+
+      h+=`<div class="item" data-f="${id}"><p id="q${id}"><b class="qn">${String(qi+1).padStart(2,"0")}</b><span>${esc(q)} <span class="req">*</span></span></p><div class="rate" role="radiogroup" aria-labelledby="q${id}">`+
         [1,2,3,4,5].map(n=>`<label class="opt"><input type="radio" name="f${id}" value="${n} – ${LABELS[n]}" aria-label="${n} – ${LABELS[n]}"><span><em>${face(n)}</em><b>${n}</b><small>${LABELS[n]}</small></span></label>`).join("")+`</div></div>`;
     });
   }else s.fields.forEach(f=>{
     const id=FIELDS.push(f)-1,star=f.req?' <span class="req">*</span>':'';
     h+=`<div class="f" data-f="${id}">`;
-    if(f.t==="area")h+=`<label for="f${id}" class="fl"><span class="li">${ico(f.ic,1.7)}</span><span>${f.label}${star}</span></label><textarea id="f${id}" name="f${id}" placeholder="Tulis di sini (opsional)"></textarea>`;
+    if(f.t==="area")h+=`<label for="f${id}" class="fl"><span class="li">${ico(f.ic,1.7)}</span><span>${f.label}${star}</span></label><textarea id="f${id}" name="f${id}" maxlength="1000" placeholder="Tulis di sini (opsional)"></textarea>`;
     if(f.t==="radio")h+=`<label for="f${id}" class="fl"><span class="li">${ico(f.ic,1.7)}</span><span>${f.label}${star}</span></label><div class="inp sel plain"><select id="f${id}" name="f${id}"><option value="">Pilih jawaban</option>`+f.opts.map(o=>opt(o)).join("")+`</select></div>`;
     h+=`</div>`;
   });
@@ -515,18 +524,17 @@ function ph(){
 }
 
 /* ---- Navigasi survei ---- */
-function counts(){steps.forEach(st=>{const w=[...st.querySelectorAll("[data-f]")],a=w.filter(x=>val(x.dataset.f)).length;
+function counts(){pct();steps.forEach(st=>{const w=[...st.querySelectorAll("[data-f]")],a=w.filter(x=>val(x.dataset.f)).length;
   st.querySelector(".count").textContent=a+" / "+w.length+" terisi"})}
 function show(i,scroll=true){
   cur=i;max=Math.max(max,i);
   steps.forEach((s,k)=>s.classList.toggle("on",k===i));
   navs.forEach((n,k)=>{n.className=k===i?"cur":k<i?"done":"";n.querySelector("button").disabled=k>max;
     n.querySelector(".dot").innerHTML=ico(k<i?"check":SECTIONS[k].ic,k<i?2.6:1.8)});
-  $("#pbar").style.width=((i+1)/N*100)+"%";
   $("#back").innerHTML=ico("arrowL",2)+(i?"Kembali":"Ubah identitas");
   $("#next").innerHTML=(i===N-1?"Kirim jawaban":"Lanjut")+ico(i===N-1?"send":"arrow",2);
   $("#msg").style.display="none";counts();
-  if(scroll)window.scrollTo({top:$("#form").offsetTop-70});
+  if(scroll){window.scrollTo({top:$("#form").offsetTop-70});steps[i].querySelector("h2").focus({preventScroll:true})}
 }
 navs.forEach((n,k)=>n.querySelector("button").onclick=()=>{if(k<=max)show(k)});
 function enter(){
@@ -589,19 +597,33 @@ async function send(){
     m.textContent="Layanan pengiriman belum tersedia. Silakan hubungi pihak sekolah.";m.style.display="block";return}
   b.disabled=true;b.textContent="Mengirim…";
   try{
-    const res=await fetch(API_URL,{method:"POST",redirect:"follow",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({answers:FIELDS.map((f,i)=>val(i))})});
+    const ac=new AbortController(),to=setTimeout(()=>ac.abort(),30000);let res;try{res=await fetch(API_URL,{method:"POST",redirect:"follow",signal:ac.signal,headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({id:sid(),answers:FIELDS.map((f,i)=>val(i))})})}finally{clearTimeout(to)}
     let j;try{j=await res.json()}catch(x){throw new Error("akses")}
     if(!j||!j.ok)throw new Error("server:"+(j&&j.error||"tidak diketahui"));
     const r=FIELDS.map((f,i)=>f.t==="rate"?parseInt(val(i)):0).filter(Boolean);
     $("#avg").innerHTML=`Rata-rata penilaian Anda <b>${(r.reduce((a,c)=>a+c,0)/r.length).toFixed(1)}</b> / 5`;
-    try{localStorage.removeItem(KEY)}catch(e){}
+    $("#ts").textContent="Diterima "+new Date().toLocaleString("id-ID",{dateStyle:"long",timeStyle:"short",timeZone:"Asia/Jakarta"})+" WIB";window.__sid=null;try{localStorage.removeItem(KEY);localStorage.removeItem(KEY+"-sid")}catch(e){}
     $("#form").hidden=true;$(".side").style.display="none";$("#app").style.gridTemplateColumns="1fr";
     $("#done").hidden=false;window.scrollTo({top:0,behavior:"smooth"});
   }catch(err){
     if(/[?&]debug/.test(location.search))console.error(err);
-    m.textContent="Jawaban belum dapat dikirim saat ini. Jawaban Anda aman di perangkat ini. Periksa koneksi internet lalu coba lagi, atau hubungi pihak sekolah.";m.style.display="block";
-    b.disabled=false;b.innerHTML="Kirim jawaban"+ico("send",2)}
+    m.textContent=(err&&err.name==="AbortError"?"Pengiriman memakan waktu terlalu lama. ":"Jawaban belum dapat dikirim saat ini. ")+"Jawaban Anda aman di perangkat ini. Periksa koneksi internet lalu coba lagi, atau hubungi pihak sekolah.";m.style.display="block";
+    b.disabled=false;b.innerHTML="Coba kirim lagi"+ico("send",2)}
 }
+const REQ=()=>FIELDS.map((f,i)=>f.req?i:-1).filter(i=>i>=0);
+function pct(){const r=REQ(),a=r.filter(i=>val(i)).length,p=Math.round(a/r.length*100);
+  document.querySelectorAll(".sp").forEach(e=>e.textContent=" \u00b7 "+p+"% selesai");
+  $("#pbar").style.width=Math.max(4,p)+"%";return p}
+$("#f0").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#start").click()}});
+document.addEventListener("keydown",e=>{const t=e.target;
+  if(t.type==="radio"&&/^[1-5]$/.test(e.key)){
+    const r=[...document.querySelectorAll(`[name="${t.name}"]`)].find(x=>x.value.charAt(0)===e.key);
+    if(r){r.checked=true;r.focus();r.dispatchEvent(new Event("change",{bubbles:true}))}}});
+const net=()=>{$("#off").hidden=navigator.onLine};
+addEventListener("online",net);addEventListener("offline",net);net();
+/* ID unik per pengiriman: tetap sama selama percobaan ulang, baru lagi setelah berhasil terkirim */
+const gen=()=>{try{if(crypto.randomUUID)return crypto.randomUUID()}catch(e){}return "k"+Date.now().toString(36)+Math.random().toString(36).slice(2,12)+Math.random().toString(36).slice(2,8)};
+function sid(){try{let v=localStorage.getItem(KEY+"-sid");if(!v){v=gen();localStorage.setItem(KEY+"-sid",v)}return v}catch(e){return window.__sid||(window.__sid=gen())}}
 restore();ph();
 if(started)enter();else{show(0,false);fit()}
 </script>
