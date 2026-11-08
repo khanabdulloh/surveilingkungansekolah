@@ -249,6 +249,29 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
 }
 @media(max-width:560px){.roles,.two{grid-template-columns:1fr}.bp p{display:none}.rule{display:none}.bp h1{margin-top:20px}.step h2{font-size:23px}.sub{flex-wrap:wrap;gap:8px}#saved{font-size:12px}}
 @media(max-width:420px){.rate{gap:6px}.rate small{display:none}.rate .opt>span{min-height:72px}.rate em{font-size:26px}.chips span{font-size:12.5px;padding:5px 10px}}
+.inp>span{left:0;top:1.5px;bottom:1.5px;transform:none;width:50px;place-items:center;border-right:1px solid var(--line);color:var(--p);font-size:19px}
+.inp input[type=text]{padding-left:66px}
+.inp.sel select{padding-left:66px}
+.inp.plain select{padding-left:16px}
+.hint{align-items:center;padding:10px 14px 10px 12px;gap:12px}
+.hint::before{display:none}
+.hic{flex:none;width:32px;height:32px;border-radius:10px;background:var(--card);color:var(--p);display:grid;place-items:center;font-size:18px;box-shadow:0 0 0 1px var(--line)}
+.hic .i{width:1em;height:1em}
+.sh{display:flex;align-items:center;gap:16px;margin:0 0 22px}
+.si{flex:none;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;color:#fff;background:linear-gradient(135deg,var(--p),var(--p2));box-shadow:0 14px 24px -14px var(--p)}
+.sn{display:block;margin-bottom:3px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p)}
+.sh h2{margin:0}
+.f>label.fl{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;line-height:1.5}
+.li{flex:none;width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--p);display:grid;place-items:center;font-size:17px}
+.item p{display:flex;gap:14px;align-items:flex-start}
+.qn{flex:none;height:24px;margin-top:1px;padding:0 8px;border-radius:8px;background:var(--soft);color:var(--p);font-size:12px;line-height:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.side .dot{width:34px;height:34px;font-size:17px}
+.side li:not(:last-child)::after{left:26px;top:46px;bottom:-12px}
+.pri,.sec{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.pri .i,.sec .i{width:1.15em;height:1.15em;font-size:16px;transition:transform .2s var(--ease)}
+@media(hover:hover){.pri:hover .i:last-child{transform:translateX(3px)}.sec:hover .i:first-child{transform:translateX(-3px)}}
+.ok{box-shadow:0 0 0 12px color-mix(in srgb,var(--ok) 14%,transparent),0 18px 32px -14px var(--ok)}
+@media(max-width:560px){.si{width:46px;height:46px;font-size:22px;border-radius:14px}.sh{gap:12px}.inp>span{width:46px}.inp input[type=text],.inp.sel select{padding-left:60px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -284,9 +307,9 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
     <div class="rw" id="rw" data-f="1">
       <div class="lr"><label for="f1">Isi sebagai <span class="req">*</span></label>
         <button type="button" class="lnk" data-faq><i data-ic="help"></i>Pertanyaan umum</button></div>
-      <div class="inp sel"><span data-ic="ortu"></span><select id="f1" name="f1" autocomplete="off"></select></div>
+      <div class="inp sel"><span id="roleic" data-ic="ortu"></span><select id="f1" name="f1" autocomplete="off"></select></div>
     </div>
-    <div class="hint" id="hint">Pilih peran Anda untuk melanjutkan.</div>
+    <div class="hint"><span class="hic" id="hintic" data-ic="info"></span><span id="hint">Pilih peran Anda untuk melanjutkan.</span></div>
     <div class="f" id="fw0" data-f="0"><label for="f0">Nama lengkap <span class="req">*</span></label>
       <div class="inp"><span data-ic="user"></span><input type="text" id="f0" name="f0" autocomplete="name" placeholder="Nama lengkap Anda"></div></div>
     <div class="f" data-f="2"><label for="f2" id="l2">Unit kerja / kelas</label>
@@ -308,6 +331,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
 
 <div class="wrap">
   <header class="head">
+    <span class="pill" style="margin:0 0 16px">Survei kepuasan 2026</span>
     <h1>Penilaian lingkungan sekolah</h1>
     <p id="hello">Beri penilaian untuk setiap pernyataan di bawah ini.</p>
     <div class="chips"><span><i data-ic="clock"></i>± 5 menit</span><span><i data-ic="shield"></i>Untuk evaluasi sekolah</span><span><i data-ic="cloud"></i>Tersimpan otomatis</span></div>
@@ -328,6 +352,7 @@ dialog::backdrop{background:rgba(8,20,50,.55);backdrop-filter:blur(4px)}
         <div class="ok" data-ic="check"></div>
         <h2>Terima kasih atas partisipasi Anda!</h2>
         <p>Jawaban Anda sudah tersimpan dan akan menjadi bahan evaluasi untuk perbaikan lingkungan sekolah.</p>
+        <div class="chips" style="justify-content:center;margin:0 0 24px"><span><i data-ic="cloud"></i>Jawaban tersimpan</span><span><i data-ic="shield"></i>Hasil dipublikasikan tanpa nama</span></div>
         <div class="avg" id="avg"></div><br>
         <button class="sec" onclick="location.reload()">Isi survei lagi</button>
       </div>
@@ -363,18 +388,18 @@ const ROLES=[
  ["Masyarakat Umum / Tamu","tamu","Pengunjung & mitra sekolah","Siswa, alumni, keluarga & umum","Anda menilai lingkungan sekolah dari pengalaman sebagai tamu atau masyarakat."]];
 const PH={"Guru":"Contoh: Guru TKJ","Staf / Tenaga Kependidikan":"Contoh: Tata Usaha","Murid / Siswa":"Contoh: XI TKJ 1","Alumni":"Contoh: Angkatan 2022, TKJ","Orang Tua / Wali Siswa":"Contoh: Orang tua kelas X","Masyarakat Umum / Tamu":"Contoh: Instansi asal"};
 const SECTIONS=[
-  {title:"Kebersihan lingkungan sekolah",rate:["Kebersihan ruang kelas.","Kebersihan halaman dan lingkungan sekolah.","Kebersihan toilet sekolah.","Ketersediaan tempat sampah.","Kebersihan kantin dan area makan.","Kondisi lingkungan sekolah secara keseluruhan."]},
-  {title:"Kenyamanan lingkungan sekolah",rate:["Lingkungan sekolah terasa nyaman untuk belajar dan bekerja.","Kondisi ruang kelas mendukung kegiatan pembelajaran.","Pencahayaan ruang kelas sudah cukup baik.","Sirkulasi udara di lingkungan sekolah cukup baik.","Suasana sekolah mendukung konsentrasi dan kegiatan belajar.","Fasilitas umum sekolah memberikan kenyamanan bagi warga sekolah."]},
-  {title:"Keamanan dan ketertiban",rate:["Lingkungan sekolah terasa aman.","Keamanan fasilitas dan barang milik warga sekolah cukup baik.","Tata tertib sekolah diterapkan dengan baik.","Lingkungan sekolah cukup tertib.","Warga sekolah saling menjaga keamanan dan ketertiban."]},
-  {title:"Fasilitas dan sarana prasarana",rate:["Kondisi meja dan kursi cukup baik.","Fasilitas pembelajaran tersedia dan dapat digunakan dengan baik.","Fasilitas toilet cukup memadai.","Fasilitas ibadah dapat digunakan dengan nyaman.","Fasilitas olahraga cukup memadai.","Sarana pendukung lainnya cukup memenuhi kebutuhan warga sekolah."]},
-  {title:"Pelayanan dan lingkungan sosial",rate:["Guru memberikan pelayanan dengan baik.","Tenaga kependidikan memberikan pelayanan dengan baik.","Warga sekolah saling menghargai.","Lingkungan sekolah mendukung sikap disiplin dan tanggung jawab.","Lingkungan sekolah mendukung terciptanya hubungan yang harmonis.","Sekolah memberikan perhatian terhadap kenyamanan warga sekolah."]},
-  {title:"Penilaian keseluruhan",desc:"Tuliskan kesan dan masukan Anda.",fields:[
-    {t:"radio",label:"Secara keseluruhan, seberapa puas Anda terhadap lingkungan SMKS Ciledug Al Musaddadiyah Garut?",req:1,opts:["Sangat Puas","Puas","Cukup Puas","Kurang Puas","Tidak Puas"]},
-    {t:"radio",label:"Apakah lingkungan sekolah saat ini sudah mendukung kegiatan belajar dan bekerja dengan baik?",req:1,opts:["Sangat Mendukung","Mendukung","Cukup Mendukung","Kurang Mendukung","Tidak Mendukung"]},
-    {t:"area",label:"Apa hal yang paling Anda sukai dari lingkungan SMKS Ciledug Al Musaddadiyah Garut?"},
-    {t:"area",label:"Apa yang perlu diperbaiki dari lingkungan sekolah?"},
-    {t:"area",label:"Fasilitas atau lingkungan apa yang menurut Anda perlu mendapatkan perhatian lebih?"},
-    {t:"area",label:"Saran atau masukan lainnya untuk meningkatkan kenyamanan lingkungan sekolah"}]}
+  {title:"Kebersihan lingkungan sekolah",ic:"leaf",rate:["Kebersihan ruang kelas.","Kebersihan halaman dan lingkungan sekolah.","Kebersihan toilet sekolah.","Ketersediaan tempat sampah.","Kebersihan kantin dan area makan.","Kondisi lingkungan sekolah secara keseluruhan."]},
+  {title:"Kenyamanan lingkungan sekolah",ic:"home",rate:["Lingkungan sekolah terasa nyaman untuk belajar dan bekerja.","Kondisi ruang kelas mendukung kegiatan pembelajaran.","Pencahayaan ruang kelas sudah cukup baik.","Sirkulasi udara di lingkungan sekolah cukup baik.","Suasana sekolah mendukung konsentrasi dan kegiatan belajar.","Fasilitas umum sekolah memberikan kenyamanan bagi warga sekolah."]},
+  {title:"Keamanan dan ketertiban",ic:"lock",rate:["Lingkungan sekolah terasa aman.","Keamanan fasilitas dan barang milik warga sekolah cukup baik.","Tata tertib sekolah diterapkan dengan baik.","Lingkungan sekolah cukup tertib.","Warga sekolah saling menjaga keamanan dan ketertiban."]},
+  {title:"Fasilitas dan sarana prasarana",ic:"build",rate:["Kondisi meja dan kursi cukup baik.","Fasilitas pembelajaran tersedia dan dapat digunakan dengan baik.","Fasilitas toilet cukup memadai.","Fasilitas ibadah dapat digunakan dengan nyaman.","Fasilitas olahraga cukup memadai.","Sarana pendukung lainnya cukup memenuhi kebutuhan warga sekolah."]},
+  {title:"Pelayanan dan lingkungan sosial",ic:"heart",rate:["Guru memberikan pelayanan dengan baik.","Tenaga kependidikan memberikan pelayanan dengan baik.","Warga sekolah saling menghargai.","Lingkungan sekolah mendukung sikap disiplin dan tanggung jawab.","Lingkungan sekolah mendukung terciptanya hubungan yang harmonis.","Sekolah memberikan perhatian terhadap kenyamanan warga sekolah."]},
+  {title:"Penilaian keseluruhan",ic:"star",desc:"Tuliskan kesan dan masukan Anda.",fields:[
+    {t:"radio",ic:"smile",label:"Secara keseluruhan, seberapa puas Anda terhadap lingkungan SMKS Ciledug Al Musaddadiyah Garut?",req:1,opts:["Sangat Puas","Puas","Cukup Puas","Kurang Puas","Tidak Puas"]},
+    {t:"radio",ic:"home",label:"Apakah lingkungan sekolah saat ini sudah mendukung kegiatan belajar dan bekerja dengan baik?",req:1,opts:["Sangat Mendukung","Mendukung","Cukup Mendukung","Kurang Mendukung","Tidak Mendukung"]},
+    {t:"area",ic:"thumb",label:"Apa hal yang paling Anda sukai dari lingkungan SMKS Ciledug Al Musaddadiyah Garut?"},
+    {t:"area",ic:"wrench",label:"Apa yang perlu diperbaiki dari lingkungan sekolah?"},
+    {t:"area",ic:"pin",label:"Fasilitas atau lingkungan apa yang menurut Anda perlu mendapatkan perhatian lebih?"},
+    {t:"area",ic:"bulb",label:"Saran atau masukan lainnya untuk meningkatkan kenyamanan lingkungan sekolah"}]}
 ];
 
 /* ---- Ikon (garis tipis, seragam) ---- */
@@ -398,6 +423,16 @@ const P={
  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
  help:'<circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/>',
  badge:'<path d="M12 3l2.4 1.7 2.9-.2 1 2.8 2.4 1.7-.9 2.8.9 2.8-2.4 1.7-1 2.8-2.9-.2L12 21l-2.4-1.7-2.9.2-1-2.8L3.3 15l.9-2.8-.9-2.8 2.4-1.7 1-2.8 2.9.2z"/><path d="m9 12 2 2 4-4"/>',
+ chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/>',
+ smile:'<circle cx="12" cy="12" r="9.5"/><path d="M8.5 14c1 1.4 2.2 2 3.5 2s2.5-.6 3.5-2M9 9.5h.01M15 9.5h.01"/>',
+ thumb:'<path d="M7 11v9H4v-9h3zM7 11l4-8c1.5 0 2.5 1 2.2 2.6L12.7 9H19a2 2 0 0 1 2 2.3l-1.1 6.5A2 2 0 0 1 17.9 19H7"/>',
+ wrench:'<path d="M14.7 6.3a4 4 0 0 0-5.4 5L3 17.6 6.4 21l6.3-6.3a4 4 0 0 0 5-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z"/>',
+ send:'<path d="M21 3 10 14M21 3l-7 18-4-7-7-4 18-7z"/>',
+ arrowL:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+ bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+ pin:'<path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+ star:'<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3z"/>',
+ info:'<circle cx="12" cy="12" r="9.5"/><path d="M12 11v5M12 8h.01"/>',
  x:'<path d="M6 6l12 12M18 6 6 18"/>'};
 const ico=(k,w=1.7)=>`<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k]}</svg>`;
 const MOUTH={1:'M8.5 16.8c1-1.5 2.2-2.2 3.5-2.2s2.5.7 3.5 2.2',2:'M9 16c.9-.7 1.9-1 3-1s2.1.3 3 1',3:'M9 15.5h6',4:'M8.8 14.6c.9 1 2 1.5 3.2 1.5s2.3-.5 3.2-1.5',5:'M8 14h8c-.5 2.6-2.1 3.8-4 3.8S8.5 16.6 8 14z'};
@@ -428,23 +463,23 @@ $("#f1").innerHTML=rh+"</optgroup>";
 /* ---- Bangun langkah survei ---- */
 const stepsEl=$("#steps");
 SECTIONS.forEach((s,si)=>{
-  let h=`<div class="step"><h2>${s.title}</h2><div class="sub"><span>${s.desc||"Pilih penilaian yang paling sesuai untuk setiap pernyataan."}</span><span class="count"></span></div>`;
+  let h=`<div class="step"><div class="sh"><span class="si">${ico(s.ic,1.6)}</span><div><span class="sn">Bagian ${si+1} dari ${SECTIONS.length}</span><h2>${s.title}</h2></div></div><div class="sub"><span>${s.desc||"Pilih penilaian yang paling sesuai untuk setiap pernyataan."}</span><span class="count"></span></div>`;
   if(s.rate){
     h+=`<div class="legend">1 = Tidak puas &nbsp;·&nbsp; 5 = Sangat puas</div>`;
-    s.rate.forEach(q=>{
+    s.rate.forEach((q,qi)=>{
       const id=FIELDS.push({label:q,req:1,t:"rate"})-1;
-      h+=`<div class="item" data-f="${id}"><p>${esc(q)} <span class="req">*</span></p><div class="rate">`+
+      h+=`<div class="item" data-f="${id}"><p><b class="qn">${String(qi+1).padStart(2,"0")}</b><span>${esc(q)} <span class="req">*</span></span></p><div class="rate">`+
         [1,2,3,4,5].map(n=>`<label class="opt"><input type="radio" name="f${id}" value="${n} – ${LABELS[n]}" aria-label="${n} – ${LABELS[n]}"><span><em>${face(n)}</em><b>${n}</b><small>${LABELS[n]}</small></span></label>`).join("")+`</div></div>`;
     });
   }else s.fields.forEach(f=>{
     const id=FIELDS.push(f)-1,star=f.req?' <span class="req">*</span>':'';
     h+=`<div class="f" data-f="${id}">`;
-    if(f.t==="area")h+=`<label for="f${id}">${f.label}${star}</label><textarea id="f${id}" name="f${id}" placeholder="Tulis di sini (opsional)"></textarea>`;
-    if(f.t==="radio")h+=`<label for="f${id}">${f.label}${star}</label><div class="inp sel plain"><select id="f${id}" name="f${id}"><option value="">Pilih jawaban</option>`+f.opts.map(o=>opt(o)).join("")+`</select></div>`;
+    if(f.t==="area")h+=`<label for="f${id}" class="fl"><span class="li">${ico(f.ic,1.7)}</span><span>${f.label}${star}</span></label><textarea id="f${id}" name="f${id}" placeholder="Tulis di sini (opsional)"></textarea>`;
+    if(f.t==="radio")h+=`<label for="f${id}" class="fl"><span class="li">${ico(f.ic,1.7)}</span><span>${f.label}${star}</span></label><div class="inp sel plain"><select id="f${id}" name="f${id}"><option value="">Pilih jawaban</option>`+f.opts.map(o=>opt(o)).join("")+`</select></div>`;
     h+=`</div>`;
   });
   stepsEl.insertAdjacentHTML("beforeend",h+"</div>");
-  $("#nav").insertAdjacentHTML("beforeend",`<li><button type="button"><span class="dot">${si+1}</span>${s.title}</button></li>`);
+  $("#nav").insertAdjacentHTML("beforeend",`<li><button type="button"><span class="dot">${ico(s.ic,1.8)}</span>${s.title}</button></li>`);
 });
 
 /* ---- Nilai & draf ---- */
@@ -471,6 +506,8 @@ function restore(){
 function ph(){
   const r=val(1),u=UNITS[r],sel=$("#f2");
   $("#hint").textContent=(ROLES.find(x=>x[0]===r)||[])[4]||"Pilih peran Anda untuk melanjutkan.";
+  const ri=(ROLES.find(x=>x[0]===r)||[])[1]||"";
+  $("#roleic").innerHTML=ico(ri||"ortu");$("#hintic").innerHTML=ico(ri||"info");
   if(sel.dataset.role===r)return;
   sel.dataset.role=r;
   if(u){$("#l2").textContent=u[0];sel.innerHTML=opt("","Pilih (opsional)")+u[1]();sel.disabled=false}
@@ -484,10 +521,10 @@ function show(i,scroll=true){
   cur=i;max=Math.max(max,i);
   steps.forEach((s,k)=>s.classList.toggle("on",k===i));
   navs.forEach((n,k)=>{n.className=k===i?"cur":k<i?"done":"";n.querySelector("button").disabled=k>max;
-    n.querySelector(".dot").textContent=k<i?"✓":k+1});
+    n.querySelector(".dot").innerHTML=ico(k<i?"check":SECTIONS[k].ic,k<i?2.6:1.8)});
   $("#pbar").style.width=((i+1)/N*100)+"%";
-  $("#back").textContent=i?"Kembali":"Ubah identitas";
-  $("#next").textContent=i===N-1?"Kirim jawaban":"Lanjut";
+  $("#back").innerHTML=ico("arrowL",2)+(i?"Kembali":"Ubah identitas");
+  $("#next").innerHTML=(i===N-1?"Kirim jawaban":"Lanjut")+ico(i===N-1?"send":"arrow",2);
   $("#msg").style.display="none";counts();
   if(scroll)window.scrollTo({top:$("#form").offsetTop-70});
 }
@@ -563,7 +600,7 @@ async function send(){
   }catch(err){
     if(/[?&]debug/.test(location.search))console.error(err);
     m.textContent="Jawaban belum dapat dikirim saat ini. Jawaban Anda aman di perangkat ini. Periksa koneksi internet lalu coba lagi, atau hubungi pihak sekolah.";m.style.display="block";
-    b.disabled=false;b.textContent="Kirim jawaban"}
+    b.disabled=false;b.innerHTML="Kirim jawaban"+ico("send",2)}
 }
 restore();ph();
 if(started)enter();else{show(0,false);fit()}
